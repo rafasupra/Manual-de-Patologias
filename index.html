@@ -1,0 +1,1862 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Manual das Patologias do Concreto</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Manual digital para pessoas comuns: entenda fissuras, eflorescência, ferrugem, concreto soltando e outros sinais em estruturas de concreto armado, e saiba qual é o próximo passo.">
+<meta property="og:title" content="Manual das Patologias do Concreto">
+<meta property="og:description" content="Reconheça sinais de problemas no concreto, entenda o que podem significar e saiba quem procurar.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: cabeçalho colante + índice lateral de capítulos + página de leitura em coluna única.
+   Linguagem visual: prancha técnica (legendas em mono "FIG. 2.1", hachura de concreto), laranja de segurança só para ação e destaque. */
+:root{
+  --bg:#f1f1ee; --surface:#ffffff; --surface2:#e8e8e4;
+  --ink:#1d2125; --ink2:#444b52; --ink3:#666d74;
+  --line:#d4d5d0; --conc:#c9cbc6; --hatch:#a3a6a0;
+  --accent:#e8590c; --accent-ink:#a83a00; --on-accent:#17120e;
+  --l1:#1f6b4a; --l1bg:#e1f0e8; --l2:#7d5200; --l2bg:#faedcc; --l3:#a3201a; --l3bg:#fbe3e0;
+  --info:#27567f; --infobg:#e3edf6;
+  --wet:#6aa6d6; --rustc:#b5551f; --white:#f7f7f4;
+  --f-body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-head:'IBM Plex Sans Condensed','IBM Plex Sans',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  --hh:60px; --navw:288px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141618; --surface:#1d2023; --surface2:#272b2f;
+    --ink:#ecece9; --ink2:#bbbfc3; --ink3:#90969b; --line:#363a3e; --conc:#3a3e42; --hatch:#575c61;
+    --accent:#ff7a2e; --accent-ink:#ff9a57; --on-accent:#17120e;
+    --l1:#74d3a3; --l1bg:#14301f; --l2:#f2bd5c; --l2bg:#3a2e10; --l3:#ff9086; --l3bg:#3d1b19;
+    --info:#8fbfe9; --infobg:#1a2a39;
+    --wet:#4a85b5; --rustc:#d77a3d; --white:#d8d8d3; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141618; --surface:#1d2023; --surface2:#272b2f;
+  --ink:#ecece9; --ink2:#bbbfc3; --ink3:#90969b; --line:#363a3e; --conc:#3a3e42; --hatch:#575c61;
+  --accent:#ff7a2e; --accent-ink:#ff9a57; --on-accent:#17120e;
+  --l1:#74d3a3; --l1bg:#14301f; --l2:#f2bd5c; --l2bg:#3a2e10; --l3:#ff9086; --l3bg:#3d1b19;
+  --info:#8fbfe9; --infobg:#1a2a39;
+  --wet:#4a85b5; --rustc:#d77a3d; --white:#d8d8d3; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.65 var(--f-body);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:60}
+a{color:var(--info);text-underline-offset:3px}
+a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--ink);color:var(--bg);padding:8px 14px;border:0;border-radius:4px;font:inherit}
+.skip:focus{left:8px}
+.mono{font-family:var(--f-mono);font-size:.78em;letter-spacing:.04em}
+button{font:inherit;color:inherit}
+
+/* Cabeçalho */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+.hdr-in{height:var(--hh);display:flex;align-items:center;gap:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:var(--accent);transition:width .1s linear}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
+.brand-mark{flex:none}
+.brand-t{display:flex;flex-direction:column;line-height:1.05;font-family:var(--f-head)}
+.brand-1{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);font-weight:500}
+.brand-2{font-size:1.12rem;font-weight:700;white-space:nowrap}
+.hdr-search{margin-left:auto;display:flex;align-items:center;gap:8px;width:min(380px,36vw);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:0 10px;color:var(--ink3)}
+.hdr-search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;font-size:.92rem;padding:9px 0;outline:0}
+.hdr-search:focus-within{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 35%,transparent)}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border:1px solid transparent;border-radius:6px;background:transparent;color:var(--ink);cursor:pointer;text-decoration:none}
+.icon-btn:hover{background:var(--surface2)}
+.menu-btn,.search-link{display:none}
+
+/* Estrutura */
+.layout{display:grid;grid-template-columns:var(--navw) minmax(0,1fr);align-items:start}
+.nav{position:sticky;top:calc(var(--hh) + env(safe-area-inset-top,0px));max-height:calc(100vh - var(--hh));overflow:auto;padding:22px 14px 40px max(16px,env(safe-area-inset-left,0px));border-right:1px solid var(--line);font-size:.92rem}
+.nav h2{font:600 .7rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:22px 8px 8px}
+.nav h2:first-child{margin-top:0}
+.nav ul{list-style:none;margin:0;padding:0}
+.nav a{display:flex;gap:10px;align-items:baseline;padding:7px 8px;border-radius:5px;text-decoration:none;color:var(--ink2);line-height:1.3}
+.nav a:hover{background:var(--surface2);color:var(--ink)}
+.nav a[aria-current="page"]{background:var(--ink);color:var(--bg);font-weight:500}
+.nav .n{font:500 .74rem var(--f-mono);min-width:1.6em;color:var(--ink3)}
+.nav a[aria-current="page"] .n{color:var(--accent)}
+.scrim{display:none}
+main{min-width:0}
+main:focus,main:focus-visible{outline:none}
+.page{max-width:820px;margin:0 auto;padding:34px max(16px,env(safe-area-inset-right,0px)) 80px max(24px,env(safe-area-inset-left,0px))}
+.page.wide{max-width:1120px}
+@media (min-width:901px){.page{padding-left:36px;padding-right:36px}}
+
+/* Tipografia */
+.eyebrow{font:500 .78rem var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);display:flex;align-items:center;gap:10px;margin:0 0 10px}
+.eyebrow::before{content:"";width:18px;height:3px;background:var(--accent)}
+h1,h2,h3,h4{font-family:var(--f-head);font-weight:700;line-height:1.12;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.45rem,3vw,1.9rem);margin:0 0 14px}
+h3{font-size:1.2rem;margin:0 0 8px}
+.lead{font-size:1.2rem;line-height:1.55;color:var(--ink2);max-width:60ch;margin:16px 0 0}
+p{margin:0 0 1em;max-width:68ch}
+.list{margin:0 0 1.1em;padding-left:1.25em;max-width:68ch}
+.list li{margin:.32em 0}
+.list li::marker{color:var(--accent-ink)}
+.sec{margin-top:52px}
+.sec>h2{padding-top:14px;border-top:2px solid var(--ink)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0}
+.linklike{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.88rem;cursor:pointer;color:var(--ink2)}
+.linklike:hover{border-color:var(--ink);color:var(--ink)}
+
+/* Botões e chips */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:6px;border:2px solid var(--ink);background:transparent;color:var(--ink);font-weight:600;text-decoration:none;cursor:pointer;line-height:1.2}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.sm{padding:8px 14px;font-size:.9rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.chip{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:.86rem;cursor:pointer;color:var(--ink2);text-decoration:none}
+.chip:hover,.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.lvl{display:inline-flex;gap:6px;align-items:center;font-size:.8rem;font-weight:600;padding:3px 10px;border-radius:4px;white-space:nowrap}
+.lvl b{font-family:var(--f-mono);font-weight:500;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.lvl.l1{background:var(--l1bg);color:var(--l1)}
+.lvl.l2{background:var(--l2bg);color:var(--l2)}
+.lvl.l3{background:var(--l3bg);color:var(--l3)}
+
+/* Avisos */
+.call{margin:1.4em 0;padding:16px 18px;border-radius:6px;border:1px solid var(--line);background:var(--surface);max-width:68ch}
+.call p:last-child,.call .list:last-child{margin-bottom:0}
+.call-h{display:flex;gap:10px;align-items:center;margin-bottom:6px;font-family:var(--f-head);font-size:1.08rem}
+.call-h svg{flex:none}
+.call.info{background:var(--infobg);border-color:transparent}.call.info .call-h{color:var(--info)}
+.call.warn{background:var(--l2bg);border-color:transparent}.call.warn .call-h{color:var(--l2)}
+.call.danger{background:var(--l3bg);border-color:transparent}.call.danger .call-h{color:var(--l3)}
+.call.ok{background:var(--l1bg);border-color:transparent}.call.ok .call-h{color:var(--l1)}
+.call.tip{background:var(--surface);border-left:4px solid var(--accent)}
+
+/* Figuras e diagramas */
+.fig{margin:1.6em 0;max-width:640px}
+.fig-art{border:1.5px solid var(--ink);background:var(--surface)}
+.fig figcaption{font-size:.88rem;color:var(--ink2);padding-top:8px;line-height:1.45}
+.fig figcaption .mono{color:var(--ink);font-weight:500;margin-right:6px}
+.dg{display:block;width:100%;height:auto}
+.dg-bg{fill:var(--surface)}
+.conc{fill:var(--conc);stroke:var(--ink3);stroke-width:1.2}
+.hatch{fill:url(#hatch);stroke:none}
+.crack{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.crack.thin{stroke-width:1.2}
+.steel{fill:var(--ink3);stroke:var(--ink);stroke-width:1.2}
+.rust{fill:var(--rustc);stroke:var(--ink);stroke-width:1}
+.rust-l{stroke:var(--rustc);stroke-width:4;fill:none;stroke-linecap:round}
+.rust-fill{fill:var(--rustc);opacity:.55}
+.wetf{fill:var(--wet)}
+.wetf.soft{opacity:.5}
+.whitef{fill:var(--white);stroke:var(--ink3);stroke-width:.6}
+.lbl{font:500 9px var(--f-mono);fill:var(--ink2)}
+.lbl.b{fill:var(--ink);font-weight:500}
+.arrow{stroke:var(--accent-ink);stroke-width:1.8;fill:none}
+.dim{stroke:var(--ink2);stroke-width:1;fill:none;stroke-dasharray:4 3}
+.void{fill:var(--ink)}
+.agg{fill:var(--surface2);stroke:var(--ink3);stroke-width:.8}
+.brick{fill:var(--surface2);stroke:var(--ink3);stroke-width:1.2}
+.patch{fill:var(--surface);stroke:var(--accent-ink);stroke-width:1.4;stroke-dasharray:4 3}
+.gap{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
+.beam{fill:none;stroke:var(--ink);stroke-width:12;stroke-linecap:butt}
+
+/* Cards e grades */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));margin:22px 0}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden;color:var(--ink);text-decoration:none}
+a.card:hover{border-color:var(--ink)}
+.card-art{border-bottom:1px solid var(--line);background:var(--surface)}
+.card-b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-b h3{font-size:1.14rem;margin:0}
+.card-b p{font-size:.93rem;color:var(--ink2);margin:0}
+.card-go{margin-top:auto;padding-top:8px;font-weight:600;font-size:.92rem;color:var(--accent-ink)}
+.card:hover .card-go{text-decoration:underline}
+
+/* Início */
+.hero{padding:6px 0 0}
+.hero h1{font-size:clamp(2.3rem,6.4vw,4rem);max-width:15ch}
+.hero .lead{font-size:1.28rem}
+.bigsearch{display:flex;gap:8px;margin:28px 0 12px;max-width:640px}
+.bigsearch input{flex:1;min-width:0;padding:14px 16px;font:inherit;border:2px solid var(--ink);border-radius:6px;background:var(--surface);color:var(--ink)}
+.bigsearch input:focus{outline:3px solid var(--accent);outline-offset:1px}
+.try{font-size:.88rem;color:var(--ink3);margin:0 0 6px}
+.disc{display:flex;gap:12px;align-items:flex-start;margin:30px 0 0;padding:14px 16px;border:1px solid var(--line);background:var(--surface);border-radius:6px;font-size:.93rem;color:var(--ink2);max-width:68ch}
+.disc svg{flex:none;margin-top:2px}
+.flow{list-style:none;margin:22px 0;padding:0;display:grid;gap:0;counter-reset:f;grid-template-columns:repeat(5,minmax(0,1fr));border:1.5px solid var(--ink);background:var(--surface)}
+.flow li{counter-increment:f;padding:16px 14px;border-right:1px solid var(--line);font-size:.92rem;line-height:1.4}
+.flow li:last-child{border-right:0}
+.flow li::before{content:counter(f);display:block;font:500 1.6rem var(--f-mono);color:var(--accent-ink);margin-bottom:6px}
+.flow li b{display:block;font-family:var(--f-head);font-size:1.05rem;margin-bottom:3px}
+@media (max-width:760px){.flow{grid-template-columns:1fr}.flow li{border-right:0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:40px 1fr;column-gap:8px}.flow li::before{grid-row:span 2;margin:0}.flow li:last-child{border-bottom:0}}
+.shortcuts{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.shortcuts .card-b h3{font-size:1.04rem}
+.three{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));margin:22px 0}
+.lcard{padding:16px;border-radius:6px;background:var(--surface);border:1px solid var(--line)}
+.lcard h3{font-size:1.05rem;margin:8px 0 6px}
+.lcard p{font-size:.92rem;color:var(--ink2);margin:0}
+.lcard.l1{border-top:5px solid var(--l1)}.lcard.l2{border-top:5px solid var(--l2)}.lcard.l3{border-top:5px solid var(--l3)}
+.lcard ul{margin:8px 0 0;padding-left:1.1em;font-size:.92rem;color:var(--ink2)}
+@media (max-width:760px){.three{grid-template-columns:1fr}}
+
+/* Quadros de comparação */
+.tablewrap{overflow-x:auto;margin:1.4em 0;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table.cmp{border-collapse:collapse;width:100%;min-width:560px;font-size:.93rem}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
+.cmp th{font-family:var(--f-head);font-size:.98rem;background:var(--surface2)}
+.cmp tr:last-child td{border-bottom:0}
+.cmp td:first-child{font-weight:600}
+.four{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr));margin:20px 0}
+.four>div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+.four h3{font-size:1rem;display:flex;align-items:center;gap:8px}
+.four h3 .mono{color:var(--accent-ink)}
+.four p{font-size:.92rem;color:var(--ink2);margin:0}
+@media (max-width:640px){.four{grid-template-columns:1fr}}
+
+/* Fichas de fissuras (acordeão) */
+.acc{background:var(--surface);border:1px solid var(--line);border-radius:6px;margin:10px 0;max-width:820px}
+.acc[open]{border-color:var(--ink)}
+.acc summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:104px 1fr auto;gap:14px;align-items:center;padding:10px 14px 10px 10px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary .thumb{border:1px solid var(--line);background:var(--surface)}
+.acc summary h3{margin:0;font-size:1.1rem}
+.acc summary .chips{margin-top:6px;gap:6px}
+.acc summary::after{content:"+";font:500 1.5rem var(--f-mono);color:var(--accent-ink);padding:0 6px}
+.acc[open] summary::after{content:"–"}
+.acc-b{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.acc-b dl{margin:0;display:grid;gap:14px}
+.acc-b dt{font:600 .72rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}
+.acc-b dd{margin:0}
+.acc-b dd p,.acc-b dd ul{margin:0;max-width:none}
+.acc-b dd ul{padding-left:1.2em}
+.acc-b dl>div{padding-top:12px}
+@media (max-width:560px){.acc summary{grid-template-columns:72px 1fr auto}}
+
+/* Níveis */
+.levels{display:grid;gap:14px;margin:22px 0}
+.level{display:grid;grid-template-columns:96px 1fr;background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.level .side{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.level .side strong{font:600 2.4rem var(--f-head);letter-spacing:0}
+.level.l1 .side{background:var(--l1bg);color:var(--l1)}
+.level.l2 .side{background:var(--l2bg);color:var(--l2)}
+.level.l3 .side{background:var(--l3bg);color:var(--l3)}
+.level .body{padding:16px 18px;min-width:0}
+.level h3{margin-bottom:4px}
+.level h4{font:600 .72rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:12px 0 4px}
+.level .list{margin:0;font-size:.95rem}
+@media (max-width:560px){.level{grid-template-columns:1fr}.level .side{flex-direction:row;justify-content:flex-start;gap:12px}}
+
+/* Posso consertar? */
+.diy{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr));margin:22px 0}
+.diy>div{border-radius:6px;padding:18px;border:1px solid var(--line);background:var(--surface)}
+.diy .yes{border-top:5px solid var(--l1)}.diy .no{border-top:5px solid var(--l3)}
+.diy h3{font-size:1.15rem}
+.diy .list{font-size:.95rem;margin-bottom:0}
+@media (max-width:760px){.diy{grid-template-columns:1fr}}
+.who{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr));margin:22px 0}
+.who>div{padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.who h3{font-size:1.1rem}
+.who p{font-size:.93rem;color:var(--ink2);margin:0}
+.who .emerg{background:var(--l3bg);border-color:transparent}
+.who .emerg h3{color:var(--l3)}
+.phone{font:600 1.4rem var(--f-mono);color:var(--ink)}
+@media (max-width:640px){.who{grid-template-columns:1fr}}
+
+/* Vídeo */
+.vslot{display:flex;gap:12px;align-items:center;margin:24px 0 0;padding:10px 14px;border:1px dashed var(--line);border-radius:6px;font-size:.9rem;color:var(--ink3);max-width:68ch}
+.vslot svg{flex:none}
+.vthumb{position:relative;aspect-ratio:16/9;background:var(--ink);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.vthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vthumb .play{position:absolute;width:54px;height:54px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center}
+.vthumb .dur{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.78);color:#fff;font:500 .74rem var(--f-mono);padding:2px 6px;border-radius:3px}
+.vthumb.ph{background:var(--surface2)}
+.vbox{margin:26px 0;max-width:720px}
+.vbox .card{width:100%;text-align:left;cursor:pointer;font:inherit}
+.vbox h2{font-size:1.1rem;font-family:var(--f-mono);letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--ink3);margin-bottom:10px}
+.vmodal{position:fixed;inset:0;z-index:200;background:rgba(10,12,14,.82);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.vmodal-in{width:min(960px,100%);background:var(--surface);border-radius:8px;overflow:hidden;max-height:100%;display:flex;flex-direction:column}
+.vmodal-player{aspect-ratio:16/9;background:#000}
+.vmodal-player video,.vmodal-player iframe{width:100%;height:100%;border:0;display:block}
+.vmodal-meta{padding:14px 18px;overflow:auto}
+.vmodal-meta h3{margin-bottom:4px}
+.vmodal-meta p{margin:0 0 .6em;font-size:.95rem;color:var(--ink2)}
+.vmodal-x{display:flex;justify-content:flex-end;padding:6px 8px 0}
+.empty{padding:28px;border:1.5px dashed var(--line);border-radius:8px;background:var(--surface);max-width:680px}
+.empty h3{font-size:1.25rem}
+.empty p{color:var(--ink2)}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 4px}
+.filters input{flex:1 1 220px;min-width:0;padding:10px 14px;border:1.5px solid var(--ink);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit}
+
+/* Ferramenta de identificação */
+.tool{margin-top:26px}
+.stephead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;font:500 .8rem var(--f-mono);color:var(--ink3);letter-spacing:.08em;text-transform:uppercase}
+.prog{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:22px}
+.prog i{display:block;height:100%;background:var(--accent)}
+.q{font:700 clamp(1.4rem,3vw,1.9rem)/1.15 var(--f-head);margin:0 0 6px}
+.qh{color:var(--ink2);margin:0 0 20px;font-size:.98rem}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.opts.list1{grid-template-columns:1fr;max-width:620px}
+.opt{display:flex;flex-direction:column;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:8px;cursor:pointer;overflow:hidden;padding:0}
+.opt:hover{border-color:var(--ink)}
+.opt.on{border-color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.opt .art{border-bottom:1px solid var(--line)}
+.opt .t{padding:10px 14px;font-weight:600;line-height:1.3}
+.opt .t small{display:block;font-weight:400;color:var(--ink2);margin-top:2px;font-size:.86rem}
+.opts.list1 .opt{flex-direction:row;align-items:center;gap:12px;padding:14px 16px}
+.opts.list1 .opt .t{padding:0}
+.box{width:22px;height:22px;flex:none;border:2px solid var(--ink);border-radius:4px;display:flex;align-items:center;justify-content:center}
+.opt.on .box{background:var(--ink)}
+.opt.on .box::after{content:"";width:10px;height:6px;border-left:2.5px solid var(--bg);border-bottom:2.5px solid var(--bg);transform:rotate(-45deg) translate(1px,-1px)}
+.navrow{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.safety{display:flex;gap:12px;padding:12px 16px;background:var(--l3bg);color:var(--l3);border-radius:6px;font-size:.93rem;line-height:1.45;margin-top:18px;max-width:700px}
+.safety svg{flex:none;margin-top:2px}
+.safety b{color:inherit}
+.result .banner{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:18px 20px;border-radius:8px;margin-bottom:18px}
+.result .banner strong{font:700 3rem/1 var(--f-head)}
+.result .banner h2{margin:0;font-size:1.5rem}
+.result .banner p{margin:4px 0 0;font-size:.95rem}
+.result .banner.l1{background:var(--l1bg);color:var(--l1)}
+.result .banner.l2{background:var(--l2bg);color:var(--l2)}
+.result .banner.l3{background:var(--l3bg);color:var(--l3)}
+.result .banner p{color:var(--ink)}
+.rsec{margin:22px 0;padding-top:14px;border-top:1px solid var(--line)}
+.rsec h3{font:600 .76rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.rsec .list{margin-bottom:0}
+.recap{display:flex;gap:8px;flex-wrap:wrap}
+.recap span{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:3px 10px;font-size:.86rem}
+.urgent{border:2px solid var(--l3);border-radius:8px;padding:18px 20px;background:var(--surface);margin:0 0 20px}
+.urgent h3{color:var(--l3);font-size:1.35rem;margin-bottom:8px}
+.urgent .list{margin-bottom:0;font-size:1.02rem}
+
+/* Checklist */
+.cl{list-style:none;margin:20px 0;padding:0;display:grid;gap:8px;max-width:680px}
+.cl label{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:6px;cursor:pointer}
+.cl label:hover{border-color:var(--ink)}
+.cl input{width:22px;height:22px;flex:none;accent-color:var(--ink);margin-top:2px}
+.cl input:checked+span{color:var(--ink3);text-decoration:line-through;text-decoration-color:var(--accent)}
+.field{display:block;margin:16px 0;max-width:680px}
+.field>span{display:block;font:600 .74rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.field input,.field textarea{width:100%;padding:10px 12px;font:inherit;border:1.5px solid var(--ink);border-radius:6px;background:var(--surface);color:var(--ink)}
+.field textarea{min-height:130px;resize:vertical}
+.cl-prog{font:500 .85rem var(--f-mono);color:var(--ink3);margin:0}
+
+/* Busca e glossário */
+.results{list-style:none;margin:20px 0;padding:0;display:grid;gap:10px;max-width:760px}
+.results a{display:block;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--ink)}
+.results a:hover{border-color:var(--ink)}
+.results .rt{font:700 1.1rem var(--f-head)}
+.results .rk{font:500 .72rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:2px}
+.results p{margin:4px 0 0;color:var(--ink2);font-size:.92rem}
+mark{background:color-mix(in srgb,var(--accent) 35%,transparent);color:inherit;padding:0 2px;border-radius:2px}
+.gl{margin:18px 0;display:grid;gap:0;max-width:760px;border-top:1px solid var(--line)}
+.gl>div{padding:12px 0;border-bottom:1px solid var(--line)}
+.gl dt{font:700 1.08rem var(--f-head);margin:0}
+.gl dd{margin:2px 0 0;color:var(--ink2);font-size:.97rem}
+
+/* Navegação entre capítulos */
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:60px}
+.pager a{display:block;padding:14px 16px;border:1.5px solid var(--ink);border-radius:6px;text-decoration:none;color:var(--ink);background:var(--surface)}
+.pager a:hover{background:var(--ink);color:var(--bg)}
+.pager small{display:block;font:500 .72rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.pager .next{text-align:right;grid-column:2}
+.pager .prev{grid-column:1}
+.photoslot{margin:20px 0;padding:14px 16px;border:1px dashed var(--line);border-radius:6px;font-size:.88rem;color:var(--ink3);max-width:68ch}
+.photos{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));margin:20px 0}
+.photos figure{margin:0}
+.photos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block;border:1px solid var(--line)}
+.photos figcaption{font-size:.86rem;color:var(--ink2);padding-top:6px}
+.foot{margin-top:70px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--ink3);max-width:68ch}
+.crumbs{font:500 .78rem var(--f-mono);letter-spacing:.06em;margin-bottom:14px;color:var(--ink3)}
+.crumbs a{color:var(--ink2)}
+.cols2{display:grid;gap:16px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin:20px 0;align-items:start}
+@media (max-width:760px){.cols2{grid-template-columns:1fr}}
+.kv{display:grid;gap:18px;margin:20px 0;max-width:760px}
+.kv h3{font:600 .76rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.kv .list,.kv p{margin:0}
+
+/* Responsivo */
+@media (max-width:900px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .menu-btn,.search-link{display:inline-flex}
+  .hdr-search{display:none}
+  .brand-1{display:none}
+  .brand-2{font-size:.98rem;overflow:hidden;text-overflow:ellipsis}
+  .brand-t{min-width:0}
+  .brand{flex:1 1 auto}
+  .hdr-in{gap:8px}
+  .nav{position:fixed;z-index:70;top:calc(var(--hh) + env(safe-area-inset-top,0px));bottom:0;left:0;width:min(86vw,330px);max-height:none;background:var(--surface);transform:translateX(-102%);transition:transform .2s ease;border-right:1px solid var(--ink);padding-bottom:max(40px,env(safe-area-inset-bottom,0px))}
+  .nav.open{transform:none}
+  .scrim.show{display:block;position:fixed;inset:0;z-index:65;background:rgba(10,12,14,.5)}
+  .page{padding-top:26px}
+}
+@media print{
+  .hdr,.nav,.scrim,.no-print,.skip{display:none!important}
+  .layout{display:block}body{background:#fff;color:#000;font-size:12pt}
+  .page{max-width:none;padding:0}
+}
+
+.ph-thumb{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+
+.acc summary.nothumb{grid-template-columns:1fr auto;padding-left:18px}
+.acc-b .photos{margin-top:16px}
+
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" style="stroke:var(--hatch);stroke-width:1;opacity:.55"/>
+    </pattern>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" style="fill:var(--accent-ink)"/>
+    </marker>
+  </defs>
+</svg>
+
+<button type="button" class="skip" id="skip">Ir para o conteúdo</button>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <button type="button" class="icon-btn menu-btn" id="menuBtn" aria-label="Abrir menu do manual" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <a class="brand" href="#inicio" aria-label="Manual das Patologias do Concreto, página inicial">
+      <svg class="brand-mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
+        <rect x="2" y="2" width="28" height="28" rx="3" fill="var(--ink)"/>
+        <rect x="7" y="7" width="18" height="18" fill="none" stroke="var(--bg)" stroke-width="2"/>
+        <circle cx="16" cy="16" r="3.6" fill="var(--accent)"/>
+      </svg>
+      <span class="brand-t"><span class="brand-1">Manual das</span><span class="brand-2">Patologias do Concreto</span></span>
+    </a>
+    <form class="hdr-search" id="hdrSearch" role="search">
+      <label class="sr" for="hdrQ">Pesquisar no manual</label>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="hdrQ" type="search" placeholder="Pesquisar: mancha branca, ferrugem no teto…" autocomplete="off">
+    </form>
+    <a class="icon-btn search-link" href="#busca" aria-label="Pesquisar">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </a>
+    <button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro e escuro">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+    </button>
+  </div>
+  <div class="bar" id="bar" role="presentation"></div>
+</header>
+
+<div class="layout">
+  <nav class="nav" id="nav" aria-label="Índice do manual"></nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" tabindex="-1"></main>
+</div>
+
+<script>
+/* Fichas do guia de fissuras (Capítulo 2). Para incluir fotos, acrescente  photos: [{ src: 'assets/img/x.jpg', alt: '...', caption: '...' }]  à ficha.
+   nivel: [mínimo, máximo] do nível de atenção PROVÁVEL. Padrão visual nunca confirma a causa. */
+window.CRACKS = [
+  {
+    id: 'vertical', nome: 'Fissuras verticais', dg: 'crack-vertical', nivel: [1, 2],
+    ve: 'Uma linha que desce na vertical, de cima para baixo, em parede, viga, pilar, muro ou laje.',
+    causas: ['Retração: o concreto e a argamassa diminuem de volume ao secar, principalmente em paredes e muros compridos.', 'Variação de temperatura: o material dilata e contrai ao longo do dia e das estações.', 'Em vigas e lajes, esforços de flexão (o elemento "dobra" um pouco sob carga) podem gerar linhas verticais no meio do vão.', 'Movimento da fundação ou do solo (recalque), em casos menos comuns.'],
+    significa: 'Muitas fissuras verticais são estáveis e não indicam risco. Mas, em vigas e lajes, principalmente no meio do vão, ou quando estão aumentando, a causa precisa ser confirmada por um profissional.',
+    observar: ['Em que elemento aparece (parede de vedação ou estrutura).', 'Se atravessa o elemento de um lado a outro.', 'Se há umidade, ferrugem ou concreto solto por perto.', 'Se aumentou de comprimento ou de abertura nas últimas semanas.'],
+    proximo: 'Fotografe com a data, registre a localização e acompanhe. Se estiver em viga, pilar ou laje, ou se estiver crescendo, peça avaliação profissional.',
+    quem: 'Engenheiro civil. Engenheiro estrutural se o elemento for viga, pilar ou laje.'
+  },
+  {
+    id: 'horizontal', nome: 'Fissuras horizontais', dg: 'crack-horizontal', nivel: [2, 3],
+    ve: 'Uma linha deitada, na horizontal, em pilar, parede, muro ou encontro entre parede e laje.',
+    causas: ['Em pilares: esforços de compressão elevados, corrosão da armadura ou falhas de execução, como juntas de concretagem mal feitas.', 'Em muros e paredes de subsolo: empuxo (pressão) do solo ou da água do lado de dentro.', 'No encontro da parede com a laje: movimentação ou deformação da laje.', 'Retração ou variação térmica, em casos superficiais.'],
+    significa: 'Em pilares e em muros que seguram terra, uma fissura horizontal merece mais cuidado que uma vertical. Pode ser algo localizado, mas só uma avaliação presencial diz.',
+    observar: ['Se o pilar ou muro parece ter saído do prumo (inclinado).', 'Se a fissura é mais aberta de um lado.', 'Se há ferrugem, umidade ou lascas de concreto.', 'Se há outros sinais na região, como piso afundando ou portas travando.'],
+    proximo: 'Se for em pilar, muro de arrimo ou parede de subsolo, procure avaliação profissional. Não faça reparo antes.',
+    quem: 'Engenheiro estrutural. Defesa Civil se houver inclinação evidente ou queda de material.'
+  },
+  {
+    id: 'diagonal', nome: 'Fissuras diagonais', dg: 'crack-diagonal', nivel: [2, 3],
+    ve: 'Uma linha inclinada, geralmente a cerca de 45 graus, em viga, pilar, laje ou parede.',
+    causas: ['Em vigas, perto dos apoios: esforço cortante (o elemento tende a "cisalhar").', 'Em alvenaria: concentração de esforços nos cantos de portas e janelas, ou recalque diferencial (um lado da construção cede mais que o outro).', 'Em lajes: deformação excessiva ou apoio inadequado.'],
+    significa: 'Em elementos estruturais, a fissura diagonal costuma ser tratada com prioridade por engenheiros. Em paredes de vedação pode ter causas mais simples, mas só uma avaliação confirma.',
+    observar: ['Se está perto do apoio de uma viga, do encontro viga-pilar ou do canto de uma laje.', 'Se a abertura é maior em uma ponta.', 'Se é recente ou se cresce.', 'Se há outras fissuras no mesmo conjunto.'],
+    proximo: 'Em viga, pilar ou laje: avaliação profissional. Se surgiu ou cresceu rápido, trate como urgente.',
+    quem: 'Engenheiro estrutural.'
+  },
+  {
+    id: 'encontro', nome: 'Fissuras junto a pilares e vigas', dg: 'wall', nivel: [1, 2],
+    ve: 'Uma linha na emenda entre a parede e o pilar, ou entre a parede e a viga ou laje de cima.',
+    causas: ['Materiais diferentes (concreto e tijolo) se movimentam de forma diferente.', 'Retração e variação de temperatura.', 'Deformação da viga ou da laje apoiada sobre a parede.', 'Falta de tela ou de amarração entre parede e estrutura.'],
+    significa: 'Quando a fissura fica só na emenda e na alvenaria, costuma ser de acomodação entre materiais. O que muda o quadro é se o concreto também está fissurado ou se a linha vem crescendo.',
+    observar: ['Se a fissura se prolonga para dentro do pilar ou da viga.', 'Se a laje de cima apresenta barriga.', 'Se a abertura varia com o tempo ou com a estação do ano.'],
+    proximo: 'Fotografe e acompanhe. Se aparecer no concreto, estiver crescendo ou vier com deformação, peça avaliação.',
+    quem: 'Engenheiro civil.'
+  },
+  {
+    id: 'lajes', nome: 'Fissuras em lajes', dg: 'slab', nivel: [2, 3],
+    ve: 'Linhas no teto ou no piso, partindo dos cantos, cruzando o meio da laje ou acompanhando as vigas.',
+    causas: ['Retração do concreto ao secar.', 'Flexão por carga maior que a prevista ou deformação excessiva.', 'Variação térmica, principalmente em lajes de cobertura.', 'Infiltração e corrosão da armadura.'],
+    significa: 'Fissuras finas e estáveis podem ser de retração. Já fissuras com barriga, umidade, ferrugem ou concreto soltando pedem avaliação. Laje é elemento estrutural e o seu comportamento só pode ser julgado por um profissional.',
+    observar: ['Se o teto está abaulado ("barriga").', 'Se há manchas de umidade ou de ferrugem.', 'Se o piso de cima está trincando no mesmo traçado.', 'Se a fissura aparece de um lado e do outro da laje.'],
+    proximo: 'Registre com fotos do teto e do piso. Chame engenheiro para avaliar. Evite colocar peso extra (reservatórios, entulho, móveis pesados) sobre a área até a avaliação.',
+    quem: 'Engenheiro estrutural ou engenheiro civil com experiência em inspeção predial.'
+  },
+  {
+    id: 'alvenaria', nome: 'Fissuras em paredes de alvenaria', dg: 'wall', nivel: [1, 2],
+    ve: 'Linhas em paredes de tijolo ou bloco, em geral no reboco, na pintura ou nos cantos de portas e janelas.',
+    causas: ['Retração da argamassa e do reboco.', 'Falta de vergas e contravergas (pequenas vigas acima e abaixo de portas e janelas).', 'Dilatação térmica.', 'Deformação da estrutura de concreto que a parede acompanha.', 'Recalque da fundação.'],
+    significa: 'A parede pode estar apenas respondendo a uma movimentação da própria estrutura. Por isso, uma fissura na parede pode ter origem estrutural ou não, e só uma avaliação diferencia.',
+    observar: ['Se a fissura segue as juntas entre os tijolos (degraus) ou corta o bloco.', 'Se o desenho se repete em várias paredes.', 'Se portas e janelas passaram a ter dificuldade para fechar.', 'Se há afundamento de piso ou de calçada por perto.'],
+    proximo: 'Fotografe, acompanhe e consulte um engenheiro se houver várias paredes com o mesmo padrão ou outros sinais.',
+    quem: 'Engenheiro civil.'
+  },
+  {
+    id: 'superficial', nome: 'Fissuras superficiais', dg: 'superficial', nivel: [1, 1],
+    ve: 'Linhas muito finas, curtas e desordenadas, em forma de rede ("craquelê" ou "mapa"), só na superfície.',
+    causas: ['Secagem rápida do reboco, da massa ou do concreto, com perda de água muito veloz.', 'Camada de acabamento mal dosada ou muito espessa.', 'Pequenas movimentações do revestimento.'],
+    significa: 'Com frequência ficam só na camada de acabamento. Mesmo assim, podem deixar a água entrar com o tempo.',
+    observar: ['Se são realmente rasas e não crescem.', 'Se há umidade ou manchas associadas.', 'Se em algum ponto a linha se destaca das demais e se prolonga.'],
+    proximo: 'Registrar e acompanhar. Se for um problema de acabamento, confirme isso com um profissional antes de tratar.',
+    quem: 'Engenheiro civil ou profissional de acabamentos, para confirmar que é superficial.'
+  },
+  {
+    id: 'atravessa', nome: 'Fissuras que atravessam o elemento', dg: 'through', nivel: [2, 3],
+    ve: 'A mesma fissura aparece dos dois lados da parede, da laje ou da viga, ou deixa passar luz ou água.',
+    causas: ['Esforços que atingem a espessura inteira do elemento.', 'Movimentação ou recalque.', 'Retração com restrição, em peças longas.'],
+    significa: 'Uma fissura que atravessa tem profundidade total. Isso a torna mais relevante, principalmente em elemento estrutural ou quando permite passagem de água.',
+    observar: ['Se existe o mesmo traçado dos dois lados.', 'Se há água ou luz passando.', 'Se há manchas de umidade, ferrugem ou depósitos brancos ao longo do traçado.'],
+    proximo: 'Fotografe os dois lados. Peça avaliação profissional, principalmente se for em laje, viga, pilar ou muro de contenção.',
+    quem: 'Engenheiro estrutural.'
+  },
+  {
+    id: 'reaparece', nome: 'Fissuras que reaparecem após reparos', dg: 'reappear', nivel: [2, 2],
+    ve: 'Uma fissura que foi coberta com massa, argamassa ou tinta e voltou a aparecer no mesmo lugar.',
+    causas: ['A causa original não foi tratada e continua agindo.', 'Movimentação contínua da estrutura ou da parede.', 'Umidade ou corrosão ainda ativas.', 'Material de reparo inadequado para a situação.'],
+    significa: 'Cobrir a fissura não resolve a causa. Se ela volta, o problema provavelmente ainda está em andamento.',
+    observar: ['Quanto tempo levou para voltar.', 'Se está mais larga ou mais longa que antes.', 'Se tem manchas de umidade ou ferrugem.', 'Se há fotos antigas para comparar.'],
+    proximo: 'Pare de refazer o acabamento. Reúna fotos e datas do histórico e peça investigação da causa.',
+    quem: 'Engenheiro civil.'
+  }
+];
+
+</script>
+<script>
+/* Biblioteca visual de manifestações patológicas.
+   Para incluir fotografias reais: salve a imagem em assets/img/ e preencha "photos" com
+   { src: 'assets/img/nome.jpg', alt: 'descrição', caption: 'legenda', credit: 'quem fotografou' }.
+   A primeira foto aparece no cartão; todas aparecem na página. Sem fotos, nenhuma imagem é mostrada. */
+window.LIB = [
+  {
+    id: 'fissuras', nome: 'Fissuras, trincas e rachaduras', dg: 'crack-diagonal', cap: 2, nivel: [1, 3], photos: [],
+    short: 'Linhas ou aberturas no concreto ou na parede, de muito finas a largas.',
+    kw: 'rachadura trinca fissura linha fina no concreto rachando parede trincada rachadura no pilar fissura diagonal na viga rachadura na laje abertura',
+    ve: 'Linhas que cortam a superfície do concreto, do reboco ou da parede. Podem ser retas, em zigue-zague, em rede, verticais, horizontais ou inclinadas.',
+    causas: ['Retração do material ao secar.', 'Variação de temperatura.', 'Sobrecarga ou deformação do elemento.', 'Movimentação da fundação (recalque).', 'Corrosão da armadura.', 'Falhas de projeto, de materiais ou de execução.'],
+    significa: 'Fissura não é sinônimo de perigo, mas também não é sempre "normal". O que pesa é o conjunto: onde está, em que direção, se atravessa, se cresce e se há outros sinais.',
+    observar: ['Elemento onde aparece (parede, viga, pilar, laje).', 'Direção: vertical, horizontal ou inclinada.', 'Se aumentou desde que você notou.', 'Umidade, ferrugem ou concreto solto por perto.'],
+    agora: ['Fotografar de perto e de longe, com a data.', 'Anotar o local exato.', 'Acompanhar sem fazer nenhuma intervenção.'],
+    evitar: ['Tapar com massa, tinta ou argamassa sem entender a causa.', 'Aplicar produtos "milagrosos" por conta própria.', 'Medir ou riscar com ferramentas que danifiquem a peça.'],
+    quem: 'Engenheiro civil. Engenheiro estrutural se estiver em viga, pilar ou laje.'
+  },
+  {
+    id: 'eflorescencia', nome: 'Eflorescência', dg: 'efflo-wall', cap: 3, nivel: [1, 2], photos: [],
+    short: 'Depósito branco, em pó ou crosta, que aparece na superfície do concreto ou da parede.',
+    kw: 'mancha branca no concreto salitre mancha branca parede mofo branco sal crosta branca cristais calcificacao',
+    ve: 'Manchas, pó ou crostas esbranquiçadas, que podem aparecer após chuvas e sumir em períodos secos. Popularmente chamadas de salitre.',
+    causas: ['Água atravessando o material e dissolvendo sais.', 'Infiltração por fissuras, falhas de impermeabilização, calhas ou vazamentos.', 'Umidade ascendente do solo.', 'Uso de materiais com sais solúveis.'],
+    significa: 'A eflorescência, sozinha, não indica comprometimento da estrutura. Mas mostra que existe água circulando, e essa água precisa ter a origem entendida, principalmente se o sinal persiste ou volta.',
+    observar: ['Se aparece depois de chuva ou do uso de água.', 'Se está junto a uma fissura ou ao pé da parede.', 'Se vem acompanhada de ferrugem, descascamento ou mofo escuro.'],
+    agora: ['Fotografar e anotar quando aparece e some.', 'Procurar a origem da água: vazamentos, ralos, calhas, jardineiras.', 'Manter registro das mudanças.'],
+    evitar: ['Lavar com ácido por conta própria.', 'Pintar por cima sem resolver a umidade: a tinta descasca e o sal volta.', 'Raspar com ferramentas agressivas.'],
+    quem: 'Engenheiro civil, para investigar a origem da umidade. Impermeabilização, depois da avaliação.'
+  },
+  {
+    id: 'desplacamento', nome: 'Concreto soltando ou desplacando', dg: 'spall', cap: 6, nivel: [2, 3], photos: [],
+    short: 'Pedaços ou camadas de concreto se soltando, com som oco ou caindo.',
+    kw: 'concreto caindo concreto soltando concreto esfarelando desplacamento lasca pedaco de concreto caindo som oco marquise caindo teto caindo reboco caindo',
+    ve: 'Placas ou lascas de concreto se desprendendo, partes que soam ocas, fragmentos no chão, superfície esfarelando, às vezes com ferro aparecendo.',
+    causas: ['Corrosão da armadura: a ferrugem ocupa mais espaço e empurra o concreto.', 'Pouco cobrimento de concreto sobre o aço.', 'Concreto de má qualidade.', 'Infiltração prolongada.', 'Impactos ou calor excessivo (como incêndio).'],
+    significa: 'Concreto soltando indica deterioração e pode ferir pessoas ao cair. Em marquises, varandas, garagens e fachadas, pede atenção rápida.',
+    observar: ['Se há ferro aparente ou manchas de ferrugem.', 'Se o trecho é sobre área de circulação.', 'Se mais pedaços caíram desde a última vez.'],
+    agora: ['Afastar pessoas e carros da área de queda.', 'Sinalizar a área à distância.', 'Fotografar sem se aproximar demais.', 'Chamar profissional com urgência.'],
+    evitar: ['Bater, puxar ou raspar o concreto para "ver como está".', 'Ficar sob marquises ou varandas com concreto solto.', 'Aplicar massa ou tinta por cima.'],
+    quem: 'Engenheiro civil ou estrutural. Defesa Civil ou Bombeiros se houver risco imediato.'
+  },
+  {
+    id: 'armadura-exposta', nome: 'Armadura exposta', dg: 'exposed', cap: 5, nivel: [2, 3], photos: [],
+    short: 'Barras de aço à vista porque o concreto que as cobria se soltou.',
+    kw: 'ferro aparecendo ferro exposto vergalhao aparecendo armadura aparente ferragem exposta ferro enferrujado na laje ferro no teto aco aparente',
+    ve: 'O ferro (vergalhão ou estribo) aparece, geralmente enferrujado, em um trecho onde o concreto caiu.',
+    causas: ['Corrosão da armadura.', 'Cobrimento insuficiente.', 'Infiltração de água por tempo prolongado.', 'Falha de concretagem.'],
+    significa: 'Armadura exposta perde a proteção do concreto e continua corroendo. É um sinal que merece avaliação profissional, principalmente em vigas, pilares e lajes.',
+    observar: ['Quantas barras aparecem e em que elemento.', 'Se o aço parece reduzido, lascado ou com muita ferrugem.', 'Se o concreto ao redor está solto.'],
+    agora: ['Fotografar com a data.', 'Não encostar nem retirar concreto ao redor.', 'Isolar a área se houver queda de pedaços.'],
+    evitar: ['Remover concreto, raspar o ferro ou aplicar produtos anticorrosivos por conta própria.', 'Cobrir com argamassa.', 'Sobrecarregar o elemento.'],
+    quem: 'Engenheiro estrutural ou civil com experiência em inspeção e recuperação.'
+  },
+  {
+    id: 'ferrugem', nome: 'Manchas de ferrugem', dg: 'rust', cap: 5, nivel: [2, 2], photos: [],
+    short: 'Manchas marrom-alaranjadas no concreto ou no reboco, muitas vezes ao longo de uma fissura.',
+    kw: 'ferrugem no teto mancha marrom mancha de ferrugem mancha alaranjada ferrugem na laje ferrugem no concreto mancha marrom no teto corrosao',
+    ve: 'Manchas de cor ferrugem (marrom ou alaranjada), em linhas ou em escorridos, às vezes junto a uma fissura que segue o trajeto de uma barra.',
+    causas: ['Corrosão da armadura sob o concreto.', 'Água ou umidade chegando ao aço.', 'Cobrimento baixo ou concreto muito poroso.', 'Em alguns casos, metais embutidos (arames, pregos) que enferrujaram sem relação com a estrutura.'],
+    significa: 'Em concreto armado, ferrugem aflorando geralmente pede avaliação: o aço pode estar corroendo por dentro, e a expansão da ferrugem tende a fissurar e soltar o concreto.',
+    observar: ['Se a mancha acompanha uma linha (como uma barra).', 'Se há fissura ou concreto estufado.', 'Se há umidade na região.'],
+    agora: ['Fotografar de perto e mostrando o contexto.', 'Anotar quando você percebeu.', 'Agendar avaliação profissional.'],
+    evitar: ['Pintar por cima ou lixar.', 'Aplicar removedores ou ácidos.', 'Esperar o concreto cair para agir.'],
+    quem: 'Engenheiro civil ou estrutural.'
+  },
+  {
+    id: 'infiltracao', nome: 'Infiltração e umidade', dg: 'damp', cap: 4, nivel: [1, 2], photos: [],
+    short: 'Manchas de umidade, goteiras, parede úmida ou teto manchado.',
+    kw: 'infiltracao umidade mancha no teto vazamento goteira mancha de umidade parede umida mofo teto molhado laje molhada banheiro vazando varanda infiltrando',
+    ve: 'Manchas escuras ou amareladas, tinta estufada ou descascando, goteiras, cheiro de mofo, ou parede e teto úmidos.',
+    causas: ['Falha de impermeabilização em lajes, varandas e banheiros.', 'Vazamento de tubulações.', 'Fissuras por onde a chuva entra.', 'Umidade que sobe do solo.', 'Condensação por pouca ventilação.'],
+    significa: 'A água é a principal aliada de vários problemas do concreto: pode causar eflorescência, mofo e corrosão da armadura. E o ponto onde a mancha aparece nem sempre fica embaixo de onde a água entra.',
+    observar: ['Se a mancha cresce depois de chuva ou do uso de água.', 'Se o piso do andar de cima tem ralo ou banheiro.', 'Se há ferrugem ou concreto soltando junto com a umidade.'],
+    agora: ['Fotografar e anotar quando piora.', 'Verificar o que há acima do ponto: banheiro, varanda, cobertura.', 'Evitar usar o ponto de água suspeito, se fizer sentido.'],
+    evitar: ['Pintar por cima sem tratar a origem.', 'Impermeabilizar sem investigar antes.', 'Mexer em fiação perto de umidade.'],
+    quem: 'Engenheiro civil, para investigar. Profissional de impermeabilização ou encanador, conforme a origem.'
+  },
+  {
+    id: 'deformacao', nome: 'Deformações', dg: 'deform', cap: 7, nivel: [2, 3], photos: [],
+    short: 'Barriga em laje ou viga, mudança de nível no piso, elementos que parecem ter se movido.',
+    kw: 'laje com barriga laje abaulada viga curvada viga arqueada piso desnivelado flecha deformacao porta travando janela travando teto caindo teto abaulado',
+    ve: 'Um teto que parece curvado para baixo, uma viga "arqueada", um piso desnivelado, rodapés abertos, portas e janelas que passaram a travar.',
+    causas: ['Carga maior que a prevista.', 'Deformação lenta do concreto ao longo do tempo.', 'Armadura insuficiente ou corroída.', 'Recalque da fundação.', 'Alteração no uso do ambiente.'],
+    significa: 'Alguma deformação é prevista no projeto. Nem toda deformação indica risco iminente, mas alterações recentes, progressivas ou acompanhadas de fissuras podem exigir avaliação urgente.',
+    observar: ['Se a mudança é recente ou foi crescendo.', 'Se há fissuras novas na laje, nas vigas ou nas paredes.', 'Se portas e janelas começaram a travar.', 'Se há estalos ou ruídos.'],
+    agora: ['Fotografar com um objeto de referência (fio de prumo, nível, régua) apenas se for seguro.', 'Retirar peso extra do local.', 'Procurar profissional com rapidez.'],
+    evitar: ['Subir em um elemento com deformação aparente.', 'Escorar por conta própria.', 'Ignorar estalos ou ruídos.'],
+    quem: 'Engenheiro estrutural. Defesa Civil ou Bombeiros se houver sinais de instabilidade.'
+  },
+  {
+    id: 'segregacao', nome: 'Segregação e falhas de concretagem', dg: 'segregation', cap: 6, nivel: [1, 2], photos: [],
+    short: 'Pedras aparentes, buracos e áreas "esburacadas" na superfície do concreto.',
+    kw: 'bicheira ninho de concretagem brita aparente concreto com buracos concreto poroso concreto esburacado segregacao falha de concretagem concreto fraco',
+    ve: 'Pontos onde aparecem pedras (brita) sem argamassa em volta, buracos, vazios, e superfície áspera e porosa. Popularmente chamada de bicheira.',
+    causas: ['Concreto mal adensado (sem vibração adequada).', 'Fôrma com vazamento de argamassa.', 'Lançamento de uma grande altura.', 'Armadura muito densa que impede a passagem do concreto.'],
+    significa: 'Pode ser apenas um defeito superficial pequeno, ou uma falha mais profunda que reduz a proteção do aço e a resistência no trecho. A extensão só é definida em avaliação.',
+    observar: ['Tamanho e profundidade aparente da falha.', 'Se há armadura à vista.', 'Se está em viga, pilar ou laje.', 'Se há umidade ou ferrugem associadas.'],
+    agora: ['Fotografar e registrar o local.', 'Não preencher com massa.', 'Informar o engenheiro da obra, se a construção for recente.'],
+    evitar: ['Tapar com reboco ou argamassa comum.', 'Aplicar produtos sem orientação técnica.'],
+    quem: 'Engenheiro civil. Engenheiro estrutural se a falha estiver em elemento portante.'
+  }
+];
+
+</script>
+<script>
+/* Glossário (Capítulo 10). Para incluir um termo, copie uma linha e preencha t (termo) e d (definição). */
+window.GLOSSARY = [
+  { t: 'Aderência', d: 'Capacidade de dois materiais ficarem bem unidos, como o concreto e o aço, ou a argamassa e a parede.' },
+  { t: 'ART', d: 'Anotação de Responsabilidade Técnica. Documento do sistema Confea/Crea que registra quem é o engenheiro responsável por um serviço.' },
+  { t: 'Armadura', d: 'Conjunto de barras de aço dentro do concreto (os "ferros" ou vergalhões). Dá ao concreto resistência a esforços de tração.' },
+  { t: 'Carbonatação', d: 'Reação lenta do gás carbônico do ar com o concreto. Com o tempo, ela reduz a proteção natural que o concreto dá ao aço.' },
+  { t: 'Cloretos', d: 'Sais, como os da água do mar, que podem chegar ao aço dentro do concreto e acelerar a corrosão.' },
+  { t: 'Cobrimento', d: 'Camada de concreto entre a superfície da peça e a armadura. Protege o aço contra água e agentes agressivos.' },
+  { t: 'Concreto armado', d: 'Concreto com barras de aço dentro. O concreto resiste bem à compressão (ser apertado) e o aço ajuda quando a peça é esticada ou dobrada.' },
+  { t: 'Concretagem', d: 'Etapa da obra em que o concreto é lançado nas fôrmas para formar vigas, pilares, lajes e outros elementos.' },
+  { t: 'Corrosão', d: 'Processo em que o aço enferruja. No concreto armado, a ferrugem ocupa mais espaço que o aço original e pressiona o concreto de dentro para fora.' },
+  { t: 'Desplacamento', d: 'Descolamento de placas ou lascas de concreto, que se soltam da peça.' },
+  { t: 'Eflorescência', d: 'Depósito esbranquiçado de sais que a água leva até a superfície e deixa ao evaporar. Popularmente chamada de salitre.' },
+  { t: 'Estribo', d: 'Anel ou laço de aço que envolve as barras principais de vigas e pilares, ajudando a manter a posição delas e a resistir a certos esforços.' },
+  { t: 'Fissura', d: 'Abertura fina e alongada no concreto ou na parede. O nome por si só não diz se é grave ou não.' },
+  { t: 'Flecha', d: 'Deformação para baixo de uma viga ou laje, a "barriga". Certa flecha é prevista em projeto, e só um profissional avalia se está dentro do esperado.' },
+  { t: 'Infiltração', d: 'Entrada indesejada de água em paredes, lajes ou outros elementos da construção.' },
+  { t: 'Inspeção predial', d: 'Avaliação técnica de uma edificação feita por profissional habilitado, para identificar problemas, suas prováveis causas e prioridades de ação.' },
+  { t: 'Impermeabilização', d: 'Conjunto de materiais e serviços que impedem a passagem de água por lajes, paredes, banheiros, varandas e outros locais.' },
+  { t: 'Laje', d: 'Elemento horizontal e plano, como um piso ou um teto, que recebe as cargas do uso e as passa para vigas ou paredes.' },
+  { t: 'Manifestação patológica', d: 'Sinal visível de um problema na construção, como fissura, mancha, ferrugem ou concreto solto. É o sintoma, e a causa precisa ser investigada.' },
+  { t: 'Patologia', d: 'Na construção, o estudo dos problemas que aparecem nas edificações, suas causas e soluções. O termo vem da medicina.' },
+  { t: 'Percolação', d: 'Passagem lenta de água por poros, fissuras e vazios de um material.' },
+  { t: 'Pilar', d: 'Elemento vertical que recebe as cargas das vigas e lajes e as leva até a fundação.' },
+  { t: 'Rachadura', d: 'Abertura larga, em geral visível de longe, que pode atravessar a peça. Exige atenção, mas o nome sozinho não define a causa.' },
+  { t: 'Recalque', d: 'Afundamento do terreno ou da fundação, que faz a construção descer, às vezes de forma desigual, e pode causar fissuras.' },
+  { t: 'Retração', d: 'Diminuição natural do volume do concreto ou da argamassa ao secar. Pode causar fissuras.' },
+  { t: 'RRT', d: 'Registro de Responsabilidade Técnica. Documento do sistema CAU que registra o arquiteto e urbanista responsável por um serviço.' },
+  { t: 'Segregação', d: 'Separação dos componentes do concreto, em que as pedras ficam juntas e sobra pouca argamassa, deixando buracos e brita aparente (bicheira).' },
+  { t: 'Trinca', d: 'Abertura intermediária entre a fissura e a rachadura. O limite entre elas varia entre autores e não define a gravidade.' },
+  { t: 'Verga e contraverga', d: 'Pequenas vigas colocadas acima (verga) e abaixo (contraverga) de portas e janelas para evitar fissuras nos cantos.' },
+  { t: 'Viga', d: 'Elemento horizontal que recebe cargas de lajes e paredes e as leva até os pilares.' }
+];
+
+</script>
+<script>
+/* ============================================================
+   BIBLIOTECA DE VÍDEOS — o único arquivo que você edita para publicar vídeos.
+
+   COMO ADICIONAR UM VÍDEO
+   1. Copie um bloco de exemplo (comentado abaixo) para dentro da lista VIDEOS.
+   2. Preencha os campos. Salve. Pronto: o vídeo aparece na página "Vídeos",
+      no capítulo indicado em "chapter" e na manifestação indicada em "manifest".
+
+   CAMPOS
+   id        identificador único, sem espaços (ex.: 'o-que-sao-fissuras')
+   title     título
+   desc      descrição curta
+   type      'file'    = arquivo de vídeo hospedado com o site (.mp4). src: 'assets/video/nome.mp4'
+             'youtube' = vídeo do YouTube. src: apenas o código (ex.: 'dQw4w9WgXcQ')
+             'vimeo'   = vídeo do Vimeo.   src: apenas o número
+   src       conforme o type acima
+   thumb     (opcional) imagem de capa: 'assets/video/capa.jpg'
+   category  uma das chaves: fissuras, eflorescencias, umidade, corrosao, deterioracao, seguranca
+   chapter   número do capítulo relacionado (1 a 9)
+   manifest  (opcional) id da manifestação: fissuras, eflorescencia, desplacamento,
+             armadura-exposta, ferrugem, infiltracao, deformacao, segregacao
+   date      data de publicação, 'AAAA-MM-DD'
+   duration  (opcional) texto, ex.: '4:32'
+
+   EXEMPLO (remova o comentário e troque os dados reais; não publique exemplos fictícios):
+   {
+     id: 'o-que-sao-fissuras',
+     title: 'O que são fissuras e como observá-las',
+     desc: 'Como surgem e o que olhar antes de chamar um profissional.',
+     type: 'file', src: 'assets/video/fissuras.mp4', thumb: 'assets/video/fissuras.jpg',
+     category: 'fissuras', chapter: 2, manifest: 'fissuras',
+     date: '2026-12-01', duration: '4:32'
+   },
+   ============================================================ */
+window.VIDEO_CATEGORIES = [
+  { id: 'fissuras', nome: 'Fissuras' },
+  { id: 'eflorescencias', nome: 'Eflorescências' },
+  { id: 'umidade', nome: 'Umidade' },
+  { id: 'corrosao', nome: 'Corrosão' },
+  { id: 'deterioracao', nome: 'Deterioração' },
+  { id: 'seguranca', nome: 'Segurança estrutural' }
+];
+
+window.VIDEOS = [
+  // Nenhum vídeo publicado ainda.
+];
+
+</script>
+<script>
+/* Conteúdo dos capítulos. Cada capítulo tem seções; cada seção tem blocos.
+   Tipos de bloco: p, ul, ol, call (k: info|warn|danger|ok|tip), fig, cmp, four, flow, cracks, levels, diy, who, gloss, lib.
+   Texto aceita **negrito** e HTML simples.
+   Blocos 'fig' só aparecem se tiverem foto: acrescente  photo: 'assets/img/arquivo.jpg'  ao bloco. */
+
+window.LEVELS = [
+  {
+    n: 1, nome: 'Observar', resumo: 'Sinais aparentemente superficiais, sem indícios adicionais de agravamento.',
+    exemplos: ['Linha muito fina e curta, que não muda.', 'Pequenos depósitos brancos que aparecem em períodos de chuva.', 'Rede de fissuras superficiais só no acabamento.'],
+    fazer: ['Fotografar com a data.', 'Registrar o local exato.', 'Acompanhar a evolução sem fazer intervenções.', 'Procurar orientação se o sinal persistir, aumentar ou surgirem outros.']
+  },
+  {
+    n: 2, nome: 'Avaliação profissional', resumo: 'Sinais que justificam uma avaliação por engenheiro civil habilitado, de preferência com experiência em estruturas ou inspeção predial.',
+    exemplos: ['Fissuras que aumentam.', 'Fissuras diagonais em elementos estruturais.', 'Manchas persistentes de umidade.', 'Ferrugem associada a fissuras.', 'Concreto deteriorado.', 'Armadura aparente.'],
+    fazer: ['Registrar tudo (use a página de checklist).', 'Agendar a avaliação presencial.', 'Não fazer reparos antes dela.', 'Limitar o uso do local se houver concreto solto.']
+  },
+  {
+    n: 3, nome: 'Atenção urgente', resumo: 'Situações com sinais potencialmente graves.',
+    exemplos: ['Queda de pedaços de concreto.', 'Pilar ou viga com deterioração acentuada.', 'Deformação recente e perceptível.', 'Fissuras que surgem ou evoluem rápido.', 'Ruídos incomuns associados a alterações estruturais.', 'Instabilidade aparente.', 'Vários sinais preocupantes juntos.'],
+    fazer: ['Afastar-se da área afetada.', 'Impedir o acesso de outras pessoas sem se colocar em risco.', 'Buscar assistência urgente de profissionais.', 'Em risco imediato, acionar Bombeiros (193) ou Defesa Civil (199).']
+  }
+];
+
+window.DIY = {
+  ok: {
+    h: 'Pode ser uma tarefa simples de manutenção',
+    intro: 'Somente em situações superficiais, sem envolvimento estrutural, sem deterioração do concreto e sem sinais de alerta:',
+    items: [
+      'Limpar calhas, ralos e rufos para que a água escoe.',
+      'Limpar leve mofo superficial em acabamento interno, depois de a origem da umidade ter sido resolvida.',
+      'Repintar uma parede de vedação, depois que um profissional confirmou a causa e a umidade cessou.',
+      'Fotografar, anotar e acompanhar. Isso é sempre bem-vindo.'
+    ]
+  },
+  no: {
+    h: 'Não faça por conta própria sem avaliação',
+    items: [
+      'Fissuras em vigas, pilares ou lajes.',
+      'Concreto se soltando.',
+      'Armadura exposta.',
+      'Ferrugem no concreto.',
+      'Fissuras que estão aumentando.',
+      'Deformações.',
+      'Reparos que exigem remoção de concreto.',
+      'Qualquer intervenção que envolva elementos estruturais.'
+    ]
+  }
+};
+
+window.WHO = [
+  { h: 'Engenheiro civil', p: 'Investiga manifestações patológicas, avalia a construção, identifica as causas e define as soluções técnicas. É o primeiro contato na maioria dos casos.' },
+  { h: 'Engenheiro estrutural', p: 'Especialista em vigas, pilares, lajes e outros elementos que sustentam a construção. Entra quando há suspeita de comprometimento estrutural.' },
+  { h: 'Profissional de impermeabilização', p: 'Executa o tratamento de infiltrações, depois que a investigação indicou que o problema é de impermeabilização. A avaliação da estrutura vem antes.' },
+  { h: 'Defesa Civil e emergência', p: 'Em sinais de instabilidade ou risco imediato.', emerg: true }
+];
+
+window.CHAPTERS = [
+  /* ---------------------------------------------------------------- 1 */
+  {
+    n: 1, slug: 'cap-1', short: 'Introdução', title: 'Introdução às manifestações patológicas',
+    lead: 'O que significam as palavras, como o concreto armado funciona e como usar este manual.',
+    desc: 'O que são manifestações patológicas no concreto, o que é concreto armado e como usar este manual com segurança.',
+    sections: [
+      { h: 'O que é uma manifestação patológica', blocks: [
+        { t: 'p', x: 'Na medicina, "patologia" é o estudo das doenças. Na construção, a palavra foi emprestada: **patologia das construções** é o estudo dos problemas que aparecem nas edificações, de suas causas e de como corrigi-los.' },
+        { t: 'p', x: 'Uma **manifestação patológica** é o sinal visível desse problema: uma fissura, uma mancha branca, uma placa de concreto solta, uma mancha de ferrugem. É como a febre numa pessoa. A febre mostra que algo não vai bem, mas não diz o que é. No concreto é igual: o que você vê é o sintoma, e a causa precisa ser investigada.' },
+        { t: 'call', k: 'info', h: 'Dois erros comuns', x: 'Achar que todo sinal é uma tragédia, ou achar que "é normal, é só estética". Muitos sinais são inofensivos. Outros avisam de problemas sérios. A diferença está em olhar o conjunto: onde está, desde quando existe, se cresce e quais outros sinais aparecem junto.' }
+      ] },
+      { h: 'O que é concreto armado', blocks: [
+        { t: 'p', x: 'O concreto resiste muito bem a ser apertado (compressão), mas mal a ser esticado ou dobrado (tração). Por isso, dentro dele se colocam **barras de aço**, a **armadura**. Juntos, formam o **concreto armado**, o material da maioria das estruturas de casas e prédios.' },
+        { t: 'ul', items: [
+          '**Pilar**: elemento vertical, leva o peso até a fundação.',
+          '**Viga**: elemento horizontal, recebe o peso das lajes e paredes e o leva aos pilares.',
+          '**Laje**: piso ou teto, a "placa" horizontal.',
+          '**Escada, marquise, varanda**: partes que também podem ser de concreto armado, muitas vezes em balanço, o que exige atenção especial.'
+        ] },
+        { t: 'p', x: 'O aço fica dentro do concreto. A camada de concreto entre a superfície e o aço se chama **cobrimento**. Ela protege a armadura da água e de agentes agressivos.' },
+        { t: 'p', x: 'Enquanto o aço está protegido pelo concreto, ele dura décadas. Boa parte dos problemas que veremos nos próximos capítulos acontece quando essa proteção falha.' }
+      ] },
+      { h: 'Por que o concreto apresenta problemas', blocks: [
+        { t: 'p', x: 'Raramente existe uma causa única. As origens costumam ser uma combinação de:' },
+        { t: 'ul', items: [
+          '**Projeto**: dimensionamento ou detalhamento inadequados.',
+          '**Materiais**: concreto ou aço de má qualidade.',
+          '**Execução**: concreto mal adensado, pouco cobrimento, fôrmas ou escoras retiradas cedo demais.',
+          '**Uso**: sobrecarga, mudança do uso do ambiente, reformas que cortam elementos estruturais.',
+          '**Manutenção**: falta de limpeza de calhas, impermeabilização vencida, ausência de inspeções.',
+          '**Ambiente**: umidade, poluição, ambiente marinho, variações de temperatura.',
+          '**Tempo**: todo material envelhece, e por isso a manutenção é necessária.'
+        ] },
+        { t: 'call', k: 'warn', h: 'Cuidado com reformas', x: 'Abrir vãos em paredes, cortar lajes, retirar pilares ou parte de vigas, ou acrescentar andares sem projeto pode comprometer a estrutura. Qualquer intervenção desse tipo exige engenheiro.' }
+      ] },
+      { h: 'O que este manual consegue e não consegue fazer', blocks: [
+        { t: 'p', x: 'Para ser útil sem dar falsa segurança, o manual separa quatro coisas:' },
+        { t: 'four' },
+        { t: 'call', k: 'danger', h: 'O manual nunca diz que algo é seguro', x: 'Nenhum texto, foto ou questionário pode afirmar que uma estrutura está segura. Isso só é possível com inspeção presencial por profissional habilitado.' }
+      ] },
+      { h: 'Como usar o manual', blocks: [
+        { t: 'flow' },
+        { t: 'p', x: 'Se preferir, use a ferramenta **"O que você encontrou?"** (menu à esquerda), que faz perguntas simples e indica o caminho mais prudente.' }
+      ] }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- 2 */
+  {
+    n: 2, slug: 'cap-2', short: 'Fissuras, trincas e rachaduras', title: 'Fissuras, trincas e rachaduras',
+    lead: 'As linhas no concreto são o sinal mais comum e o mais confundido. Aprenda a observá-las antes de tirar conclusões.',
+    desc: 'Diferença entre fissura, trinca e rachadura e como observar cada tipo: vertical, horizontal, diagonal, em lajes, em alvenaria e que reaparecem.',
+    video: 'fissuras',
+    sections: [
+      { h: 'Fissura, trinca ou rachadura?', blocks: [
+        { t: 'p', x: 'Os três nomes descrevem aberturas em paredes e elementos de concreto. Em geral, **fissura** é usado para as mais finas, **trinca** para as intermediárias e **rachadura** para as mais largas. Os limites entre esses nomes variam entre autores e normas, e a palavra usada **não define a gravidade**.' },
+        { t: 'call', k: 'tip', h: 'Evite a regra do "milímetro"', x: 'Uma fissura muito fina pode ser séria, dependendo de onde está e do que a causou. E uma mais larga pode ser inofensiva. Por isso este manual não usa a largura como critério isolado.' }
+      ] },
+      { h: 'O que realmente importa: o conjunto de sinais', blocks: [
+        { t: 'p', x: 'Ao olhar uma fissura, observe ao mesmo tempo:' },
+        { t: 'cmp', head: ['O que observar', 'Por que importa'], rows: [
+          ['Abertura', 'Ajuda a acompanhar a evolução, mas sozinha não diz se é grave.'],
+          ['Localização', 'Uma fissura em parede de vedação e outra em viga têm significados diferentes.'],
+          ['Direção', 'Vertical, horizontal e diagonal costumam estar ligadas a esforços diferentes.'],
+          ['Evolução', 'Fissura estável há anos é diferente de uma que surgiu ou cresceu em semanas.'],
+          ['Profundidade', 'Superficial (só no acabamento) ou atravessando o elemento.'],
+          ['Elemento atingido', 'Elementos estruturais pedem mais cuidado que os de vedação.'],
+          ['Outros sinais', 'Umidade, ferrugem, concreto solto, deformação, portas que travam.']
+        ] },
+        { t: 'fig', dg: 'beam-pattern', cap: 'Padrões que costumam aparecer em vigas. Só uma avaliação presencial confirma a causa. Não use este desenho para concluir nada sozinho.' }
+      ] },
+      { h: 'Guia dos tipos de fissura', blocks: [
+        { t: 'call', k: 'warn', h: 'Padrão visual não confirma a causa', x: 'As fichas abaixo ajudam a reconhecer padrões e a decidir o próximo passo. Elas descrevem causas possíveis, que são hipóteses, e não substituem uma inspeção.' },
+        { t: 'cracks' }
+      ] },
+      { h: 'Possíveis causas em geral', blocks: [
+        { t: 'ul', items: [
+          '**Retração**: o material encolhe ao secar.',
+          '**Variações de temperatura**: o material dilata e contrai.',
+          '**Sobrecarga ou deformação** além do previsto.',
+          '**Recalque**: o solo ou a fundação cedem.',
+          '**Corrosão da armadura**, que empurra o concreto.',
+          '**Falhas de execução**, como pouco cobrimento ou concreto mal adensado.',
+          '**Movimentação entre materiais** diferentes, como concreto e tijolo.'
+        ] },
+        { t: 'p', x: 'Descobrir qual (ou quais) dessas causas atua em seu caso é trabalho de investigação profissional.' }
+      ] },
+      { h: 'Próximo passo', blocks: [
+        { t: 'ul', items: ['Use a página **"Antes de chamar um profissional, registre isso"** para organizar fotos e observações.', 'Em dúvida, use a ferramenta **"O que você encontrou?"**.', 'Leia o capítulo 8 para entender os níveis de atenção.'] }
+      ] }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- 3 */
+  {
+    n: 3, slug: 'cap-3', short: 'Eflorescências', title: 'Eflorescências',
+    lead: 'A mancha branca que aparece, some e volta. O que é, de onde vem e quando merece investigação.',
+    desc: 'O que é eflorescência (salitre), por que depósitos brancos aparecem no concreto e na alvenaria, como diferenciar de mofo e quando investigar.',
+    video: 'eflorescencias',
+    sections: [
+      { h: 'O que é eflorescência', blocks: [
+        { t: 'p', x: '**Eflorescência** é um depósito esbranquiçado, em pó, em crosta ou em manchas, que aparece na superfície do concreto, da argamassa ou de tijolos. Popularmente é chamada de **salitre**.' },
+        { t: 'fig', dg: 'efflo-wall', cap: 'Depósitos brancos irregulares numa parede, alguns acompanhando uma fissura.' }
+      ] },
+      { h: 'Por que o depósito branco aparece', blocks: [
+        { t: 'p', x: 'O concreto e a argamassa contêm **sais solúveis**, substâncias que se dissolvem em água. O processo, de forma simplificada, tem três passos:' },
+        { t: 'ol', items: ['A água entra no material (por chuva, vazamento ou umidade do solo).', 'Ao percorrer os poros, ela dissolve sais.', 'Ao chegar à superfície, a água evapora e o sal cristaliza, formando o depósito branco.'] },
+        { t: 'fig', dg: 'efflo-mech', cap: 'Corte de uma parede mostrando como a água leva sais até a superfície.' },
+        { t: 'p', x: 'Isso explica por que a mancha pode **aparecer, desaparecer e reaparecer**: depende de quanta água há e da velocidade com que ela evapora. Em época seca pode sumir. Depois de chuvas, volta.' }
+      ] },
+      { h: 'Eflorescência, mofo e outras manchas', blocks: [
+        { t: 'cmp', head: ['', 'Aparência', 'Quando aparece', 'O que pode indicar'], rows: [
+          ['Eflorescência', 'Branca, em pó, crosta ou cristais. Sem aspecto de "pelo".', 'Após chuvas ou em locais com água passando.', 'Água percorrendo o material. A origem deve ser investigada.'],
+          ['Mofo', 'Pontos ou manchas escuras (preto, verde, cinza), às vezes com aspecto aveludado e cheiro de guardado.', 'Locais úmidos e pouco ventilados.', 'Umidade persistente ou condensação.'],
+          ['Ferrugem', 'Marrom ou alaranjada, em linhas ou escorridos.', 'Junto a fissuras ou ao longo de barras.', 'Possível corrosão da armadura (capítulo 5).'],
+          ['Mancha de umidade', 'Mancha escura ou amarelada, tinta estufada.', 'Perto de vazamentos, de lajes e de banheiros.', 'Infiltração em andamento (capítulo 4).']
+        ] },
+        { t: 'p', x: 'Uma mancha pode ser mais de uma dessas coisas ao mesmo tempo. Na dúvida, fotografe e peça orientação.' }
+      ] },
+      { h: 'Quando é só superficial e quando investigar', blocks: [
+        { t: 'call', k: 'ok', h: 'Pode ser apenas superficial quando', items: ['Aparece em pequena área.', 'Surge após chuva e some em períodos secos.', 'Não vem acompanhada de fissuras novas, ferrugem ou concreto solto.'] },
+        { t: 'call', k: 'warn', h: 'Merece investigação quando', items: ['Persiste ou volta com frequência.', 'Ocupa áreas grandes ou aumenta.', 'Está ligada a uma fissura ou a uma laje, varanda, subsolo ou cobertura.', 'Aparece junto de ferrugem, descascamento ou concreto deteriorado.'] },
+        { t: 'p', x: 'A eflorescência, **isoladamente, não significa que a estrutura esteja comprometida**. Mas sua origem (a água) deve ser investigada quando persistente ou associada a outros sinais.' }
+      ] },
+      { h: 'O que fazer e o que evitar', blocks: [
+        { t: 'cols', a: { h: 'Faça', ok: true, items: ['Fotografar com a data e anotar quando aparece e some.', 'Procurar de onde vem a água: ralos, calhas, vazamentos, jardineiras encostadas na parede.', 'Manter os registros para mostrar a um profissional.'] }, b: { h: 'Evite', items: ['Lavar com ácido por conta própria.', 'Pintar ou impermeabilizar por cima sem descobrir a origem da umidade.', 'Raspar com ferramentas agressivas.'] } }
+      ] }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- 4 */
+  {
+    n: 4, slug: 'cap-4', short: 'Umidade e infiltrações', title: 'Umidade e infiltrações',
+    lead: 'A água é a principal aliada dos problemas do concreto. Entender de onde ela vem é metade da solução.',
+    desc: 'Origens da umidade e das infiltrações em construções de concreto, por que a mancha pode aparecer longe da origem e o que fazer.',
+    video: 'umidade',
+    sections: [
+      { h: 'Por que a umidade importa para o concreto', blocks: [
+        { t: 'p', x: 'O concreto é poroso. A água circula por seus poros e por fissuras e, quando chega à armadura, ajuda a causar corrosão. Também leva sais à superfície (eflorescência) e favorece mofo. Resolver a umidade costuma ser o primeiro passo para tratar vários outros sinais.' }
+      ] },
+      { h: 'De onde vem a água', blocks: [
+        { t: 'ul', items: [
+          '**Chuva**: entra por fissuras, juntas, rufos, esquadrias e lajes de cobertura.',
+          '**Vazamentos**: tubulações de água e esgoto, ralos, caixas d\'água.',
+          '**Umidade do solo**: sobe pelas paredes e pelos pés de pilares (umidade ascendente).',
+          '**Áreas molháveis**: banheiros, cozinhas, varandas, áreas de serviço, jardineiras e piscinas.',
+          '**Condensação**: o vapor do ar se transforma em água em superfícies frias, em ambientes pouco ventilados.'
+        ] },
+        { t: 'fig', dg: 'damp', cap: 'A água entra num ponto, caminha pelo material e pode surgir bem longe, em outro ponto do teto.' },
+        { t: 'call', k: 'tip', h: 'A mancha não está, necessariamente, embaixo do vazamento', x: 'Por isso, "consertar onde aparece" nem sempre resolve. A investigação segue o caminho da água.' }
+      ] },
+      { h: 'Como observar', blocks: [
+        { t: 'ul', items: ['A mancha cresce depois de chuva? Depois de usar chuveiro, torneira ou máquina de lavar?', 'O andar de cima tem banheiro, varanda ou jardineira sobre aquele ponto?', 'Há tinta estufada, descascando, bolhas ou cheiro de mofo?', 'Há ferrugem, depósitos brancos ou concreto soltando junto com a umidade?'] },
+        { t: 'p', x: 'Anote as respostas e fotografe. Isso ajuda muito o profissional a achar a origem.' }
+      ] },
+      { h: 'Qual o nível de atenção', blocks: [
+        { t: 'ul', items: ['**Nível 1**: pequena mancha, estável, sem outros sinais, em acabamento. Observe.', '**Nível 2**: manchas persistentes, que crescem ou voltam, em laje ou parede estrutural, ou junto de ferrugem e concreto deteriorado. Peça avaliação.', '**Nível 3**: quando há concreto caindo, ferro muito enferrujado ou deformação junto da umidade. Trate como urgente.'] },
+        { t: 'call', k: 'warn', h: 'Antes de impermeabilizar', x: 'Primeiro se investiga a origem e se avalia a condição do concreto. Impermeabilizar sem esse passo pode esconder o problema e gastar dinheiro.' }
+      ] },
+      { h: 'Quem procurar', blocks: [
+        { t: 'p', x: 'Comece por um **engenheiro civil**, para investigar. Se a origem for impermeabilização ou tubulação, ele indicará o profissional certo: especialista em impermeabilização ou encanador.' }
+      ] }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- 5 */
+  {
+    n: 5, slug: 'cap-5', short: 'Corrosão das armaduras', title: 'Corrosão das armaduras',
+    lead: 'O que acontece quando o aço que está dentro do concreto começa a enferrujar, e por que isso merece avaliação profissional.',
+    desc: 'Como e por que o aço dentro do concreto enferruja, por que o concreto fissura e solta, e por que armadura exposta merece avaliação profissional.',
+    video: 'corrosao',
+    sections: [
+      { h: 'Armadura: o aço dentro do concreto', blocks: [
+        { t: 'p', x: 'A **armadura** é o conjunto de barras de aço que ficam dentro do concreto. Ela resiste a esforços de tração e garante que a peça trabalhe como foi projetada.' },
+        { t: 'p', x: 'Normalmente, o aço fica protegido: o concreto é muito alcalino e forma uma película que impede a ferrugem, e a camada de **cobrimento** funciona como barreira contra a água.' }
+      ] },
+      { h: 'Como a proteção pode falhar', blocks: [
+        { t: 'ul', items: [
+          '**Carbonatação**: o gás carbônico do ar reage com o concreto e, com o tempo, reduz a alcalinidade que protege o aço.',
+          '**Cloretos**: sais (como os do ambiente marinho) chegam ao aço e favorecem a corrosão.',
+          '**Fissuras e poros**: criam caminhos para a água e agentes agressivos.',
+          '**Cobrimento insuficiente**: pouco concreto entre a superfície e o aço.',
+          '**Umidade frequente**: a corrosão precisa de água e oxigênio.'
+        ] }
+      ] },
+      { h: 'A sequência: de aço protegido a concreto solto', blocks: [
+        { t: 'fig', dg: 'corrosion', cap: 'Sequência simplificada. Cada obra tem seus tempos, e essa evolução pode levar muitos anos.' },
+        { t: 'ol', items: [
+          '**Aço protegido**: o concreto o envolve e o isola.',
+          '**Agentes chegam**: água, gás carbônico ou sais atravessam o cobrimento.',
+          '**A ferrugem se expande**: ela ocupa mais espaço que o aço original e empurra o concreto de dentro para fora. Surgem fissuras que acompanham a barra e manchas cor de ferrugem na superfície.',
+          '**O concreto se solta**: pedaços se destacam (desplacamento) e o aço fica à vista, agora sem proteção, e continua corroendo.'
+        ] }
+      ] },
+      { h: 'Manchas de ferrugem e armadura exposta', blocks: [
+        { t: 'p', x: 'Uma **mancha de ferrugem** num concreto armado pode ser o primeiro aviso do que está acontecendo por dentro. **Armadura exposta** é a fase mais avançada: o aço está à vista, sem a proteção do concreto.' },
+        { t: 'p', x: 'Por isso esses sinais merecem **avaliação profissional**, principalmente em vigas, pilares, lajes, marquises e varandas. A corrosão pode reduzir a seção do aço, e só um engenheiro consegue avaliar o quanto isso afeta a peça.' },
+        { t: 'lib', ids: ['ferrugem', 'armadura-exposta'] },
+        { t: 'call', k: 'danger', h: 'Não faça isto por conta própria', items: ['Remover concreto ao redor.', 'Raspar ou lixar a armadura.', 'Aplicar produtos anticorrosivos ou tintas no ferro.', 'Cobrir com argamassa ou massa.', 'Executar qualquer reparo estrutural.'] }
+      ] }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- 6 */
+  {
+    n: 6, slug: 'cap-6', short: 'Desplacamento e deterioração', title: 'Desplacamento e deterioração do concreto',
+    lead: 'Quando o concreto se solta, há risco de queda. Entenda os sinais e como se proteger.',
+    desc: 'Sinais de concreto soltando ou deteriorado, partes ocas, armadura visível, segregação, e como se proteger e isolar a área.',
+    video: 'deterioracao',
+    sections: [
+      { h: 'Sinais de deterioração', blocks: [
+        { t: 'ul', items: [
+          'Concreto se soltando em placas ou lascas.',
+          'Partes ocas (profissionais as identificam pelo som, ao bater levemente com ferramenta).',
+          'Fragmentos no chão.',
+          'Superfície esfarelando ou perdendo material.',
+          'Armadura visível, geralmente enferrujada.',
+          'Pedras (brita) aparentes e vazios, chamados de segregação ou "bicheira".'
+        ] },
+        { t: 'fig', dg: 'spall', cap: 'Corte do concreto: camada superficial solta e fragmentos caindo.' },
+        { t: 'fig', dg: 'segregation', cap: 'Segregação: pedras aparentes e vazios por falta de argamassa na concretagem.' }
+      ] },
+      { h: 'Por que merece atenção', blocks: [
+        { t: 'p', x: 'O concreto solto pode **ferir pessoas e danificar veículos** ao cair. Além disso, geralmente indica que algo está agindo por dentro, como corrosão ou infiltração, e que a peça perdeu parte da sua proteção.' },
+        { t: 'p', x: 'A atenção é maior em **vigas, pilares, lajes, marquises, varandas, garagens e áreas de circulação de pessoas**.' },
+        { t: 'lib', ids: ['desplacamento', 'segregacao'] }
+      ] },
+      { h: 'Segurança: quando isolar a área', blocks: [
+        { t: 'call', k: 'danger', h: 'Isole a área quando', items: ['Já caíram pedaços de concreto.', 'Há partes soltas ou ocas sobre local de passagem, como calçadas, marquises, garagens, escadas ou varandas.', 'Há armadura exposta acompanhada de concreto solto.'] },
+        { t: 'ol', items: ['Afaste pessoas, crianças, animais e veículos da área de queda.', 'Sinalize de longe (fita ou cones) sem se colocar embaixo do trecho solto.', 'Avise o responsável: síndico, administradora ou proprietário.', 'Fotografe à distância segura, sem tocar no concreto.', 'Contrate engenheiro com urgência. Em risco imediato, chame Bombeiros (193) ou Defesa Civil (199).'] },
+        { t: 'call', k: 'warn', h: 'Não "teste" o concreto', x: 'Bater, puxar ou raspar o concreto para ver como está pode derrubar pedaços. A verificação de partes ocas é feita por profissionais, com equipamentos e cuidados adequados.' }
+      ] }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- 7 */
+  {
+    n: 7, slug: 'cap-7', short: 'Deformações estruturais', title: 'Deformações estruturais',
+    lead: 'Quando algo parece torto, curvado ou fora do lugar. Nem tudo é grave, mas alguns sinais pedem pressa.',
+    desc: 'O que são deformações estruturais, como reconhecer laje com barriga ou viga deformada e quais situações exigem avaliação urgente.',
+    video: 'seguranca',
+    sections: [
+      { h: 'O que é deformação', blocks: [
+        { t: 'p', x: 'Toda estrutura se deforma um pouco quando recebe carga. Isso é previsto em projeto. A **flecha** é a deformação para baixo de uma viga ou laje. O que importa é se a deformação está dentro do esperado, e **isso só um profissional pode avaliar**.' },
+        { t: 'fig', dg: 'deform', cap: 'A deformação foi exagerada no desenho. Na vida real, costuma ser bem mais sutil.' }
+      ] },
+      { h: 'Situações que merecem atenção', blocks: [
+        { t: 'ul', items: [
+          'Laje aparentemente abaulada ("barriga") ou com flecha excessiva.',
+          'Viga com deformação perceptível.',
+          'Piso com mudança de nível.',
+          'Elementos que parecem estar se deslocando, como paredes saindo do alinhamento.',
+          'Portas e janelas que passaram a ter dificuldade de funcionamento, quando associado a outros sinais.'
+        ] },
+        { t: 'lib', ids: ['deformacao'] }
+      ] },
+      { h: 'Quando é mais urgente', blocks: [
+        { t: 'p', x: 'Nem toda deformação significa risco iminente. Mas procure avaliação com rapidez se a deformação for:' },
+        { t: 'ul', items: ['**Recente**: apareceu há poucos dias ou semanas.', '**Progressiva**: está aumentando.', '**Acompanhada de fissuras**, de concreto soltando ou de ruídos (estalos).'] },
+        { t: 'call', k: 'danger', h: 'Se houver sinais de instabilidade', x: 'Afaste-se do local, retire as pessoas e ligue para Bombeiros (193) ou Defesa Civil (199). Não suba, não escore e não retire peso por conta própria, se isso o colocar sob o elemento deformado.' }
+      ] }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- 8 */
+  {
+    n: 8, slug: 'cap-8', short: 'Níveis de atenção', title: 'Como avaliar os sinais de atenção',
+    lead: 'Um sistema simples de três níveis para decidir o próximo passo.',
+    desc: 'Os três níveis de atenção do manual: observar, avaliação profissional e atenção urgente, com exemplos e orientações.',
+    sections: [
+      { h: 'Uma triagem educativa', blocks: [
+        { t: 'call', k: 'warn', h: 'Importante', x: 'Os níveis abaixo são uma **triagem educativa** para ajudar na decisão. **Não são diagnóstico estrutural, classificação oficial de segurança ou garantia de que uma estrutura está segura.**' }
+      ] },
+      { h: 'Os três níveis', blocks: [{ t: 'levels' }] },
+      { h: 'Combinação de sinais', blocks: [
+        { t: 'p', x: 'Um sinal isolado costuma ser menos preocupante que vários juntos. Exemplos de combinações que elevam o cuidado:' },
+        { t: 'ul', items: ['Fissura + ferrugem + concreto estufado.', 'Fissura diagonal + deformação + portas travando.', 'Umidade persistente + armadura exposta.', 'Qualquer sinal em marquise, varanda ou laje de cobertura + concreto solto.'] },
+        { t: 'p', x: 'Se você não sabe qual nível se aplica, use a ferramenta **"O que você encontrou?"**. Ela prioriza imediatamente a segurança quando alguma resposta indica possível gravidade.' }
+      ] }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- 9 */
+  {
+    n: 9, slug: 'cap-9', short: 'Como proceder e quem procurar', title: 'Como proceder e quem procurar',
+    lead: 'O que você pode fazer, o que não deve fazer sozinho e quem chamar.',
+    desc: 'Posso consertar sozinho? Quem procurar para avaliar problemas no concreto, o que são ART e RRT e como escolher um profissional.',
+    video: 'seguranca',
+    sections: [
+      { h: 'Posso consertar sozinho?', blocks: [
+        { t: 'diy' },
+        { t: 'call', k: 'warn', h: 'Cobrir não é resolver', x: 'Esconder uma fissura com massa, tinta ou argamassa **não significa que o problema foi resolvido**. A causa continua lá, e a fissura costuma voltar. Antes de qualquer acabamento, confirme a causa da umidade ou do problema.' },
+        { t: 'p', x: 'Este manual não traz receitas de reparo estrutural, dimensionamento ou técnicas de reforço. Isso exige projeto e execução por profissionais habilitados.' }
+      ] },
+      { h: 'Quem devo chamar?', blocks: [{ t: 'who' }] },
+      { h: 'ART e RRT', blocks: [
+        { t: 'p', x: 'Serviços de engenharia e de arquitetura são registrados em documentos que identificam o responsável técnico:' },
+        { t: 'ul', items: ['**ART** (Anotação de Responsabilidade Técnica): para engenheiros, no sistema Confea/Crea.', '**RRT** (Registro de Responsabilidade Técnica): para arquitetos e urbanistas, no sistema CAU.'] },
+        { t: 'p', x: 'Quando aplicável à atividade contratada, peça o documento. Ele registra quem responde tecnicamente pelo serviço.' }
+      ] },
+      { h: 'Como escolher o profissional', blocks: [
+        { t: 'ul', items: [
+          'Confirme o registro no Crea (engenheiros) ou no CAU (arquitetos).',
+          'Procure experiência em **estruturas, patologia das construções ou inspeção predial**.',
+          'Peça uma **vistoria presencial** antes do orçamento.',
+          'Desconfie de quem promete resolver "só com massa" ou "só com tinta" sem investigar a causa.',
+          'Peça o diagnóstico e as recomendações por escrito.',
+          'Em condomínios, o síndico e a administradora devem ser avisados, pois a manutenção das áreas comuns é responsabilidade coletiva.'
+        ] }
+      ] },
+      { h: 'Para saber mais', blocks: [
+        { t: 'p', x: 'Normas brasileiras da ABNT que tratam de temas relacionados (consulte o texto oficial na ABNT para detalhes e versões vigentes):' },
+        { t: 'ul', items: ['**ABNT NBR 6118**: projeto de estruturas de concreto.', '**ABNT NBR 5674**: manutenção de edificações.', '**ABNT NBR 16747**: inspeção predial.', '**ABNT NBR 15575**: desempenho de edificações habitacionais.', '**ABNT NBR 9575**: impermeabilização, seleção e projeto.'] }
+      ] }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- 10 */
+  {
+    n: 10, slug: 'cap-10', short: 'Glossário técnico', title: 'Glossário técnico',
+    lead: 'Os termos do manual, explicados em linguagem simples.',
+    desc: 'Glossário pesquisável com termos técnicos do concreto armado e das manifestações patológicas, explicados de forma simples.',
+    sections: [{ h: 'Termos', blocks: [{ t: 'gloss' }] }]
+  }
+];
+
+window.FOUR = [
+  { n: 'A', h: 'O que pode ser observado', p: 'Fatos visíveis: onde está a fissura, como é a mancha, se cresceu.' },
+  { n: 'B', h: 'O que é hipótese', p: 'Causas possíveis, que explicam o que você viu, mas não estão confirmadas.' },
+  { n: 'C', h: 'O que exige investigação', p: 'O que só é decidido com inspeção presencial, ensaios e análise técnica.' },
+  { n: 'D', h: 'O que o site não pode determinar', p: 'Se um elemento é seguro, se a estrutura está comprometida, a solução de reparo.' }
+];
+
+window.FLOW = [
+  { h: 'Identifique', p: 'Veja o que está observando.' },
+  { h: 'Localize', p: 'Observe onde está.' },
+  { h: 'Procure outros sinais', p: 'Umidade, ferrugem, deformação.' },
+  { h: 'Consulte o guia', p: 'Leia o capítulo ou a ficha.' },
+  { h: 'Saiba como agir', p: 'Quem procurar e o que evitar.' }
+];
+
+</script>
+<script>
+/* Diagramas esquemáticos em SVG (todos usam as cores do tema via classes CSS).
+   Para trocar um diagrama por uma fotografia real, veja o campo "photos" em data/library.js. */
+window.DG = (function () {
+  const W = (inner, label) =>
+    `<svg class="dg" viewBox="0 0 320 200" role="img" aria-label="${label}"><rect class="dg-bg" width="320" height="200"/>${inner}</svg>`;
+  const T = (x, y, s, a = 'middle', c = 'lbl') => `<text class="${c}" x="${x}" y="${y}" text-anchor="${a}">${s}</text>`;
+  const wall = (x, y, w, h) =>
+    `<rect class="conc" x="${x}" y="${y}" width="${w}" height="${h}"/><rect class="hatch" x="${x}" y="${y}" width="${w}" height="${h}"/>`;
+  const C = (d, c = 'crack') => `<path class="${c}" d="${d}"/>`;
+  const tri = (x, y) => `<path class="steel" d="M${x} ${y}l-12 18h24z"/>`;
+  const D = {};
+
+  D['crack-vertical'] = () => W(
+    wall(70, 24, 180, 140) + C('M160 24l-5 22 7 20-6 24 5 22-4 20-2 12') + T(160, 186, 'fissura vertical'),
+    'Esquema de uma fissura vertical em um elemento de concreto');
+
+  D['crack-horizontal'] = () => W(
+    wall(50, 50, 220, 100) + C('M50 98l40 5 36-6 40 6 38-5 40 4 26-3') + T(160, 176, 'fissura horizontal'),
+    'Esquema de uma fissura horizontal em um elemento de concreto');
+
+  D['crack-diagonal'] = () => W(
+    wall(50, 36, 220, 120) + C('M70 150l30-30 22-26 30-24 24-14 40-12') + T(160, 180, 'fissura diagonal (inclinada)'),
+    'Esquema de uma fissura diagonal em um elemento de concreto');
+
+  D['beam-pattern'] = () => W(
+    wall(24, 64, 272, 56) + tri(44, 120) + tri(276, 120) +
+    C('M150 120l2-14-2-14') + C('M168 120l-2-10') + C('M132 120l-1-9') +
+    C('M72 120l20-50') + C('M82 120l16-44') + C('M248 120l-20-50') + C('M238 120l-16-44') +
+    T(88, 156, 'perto do apoio') + T(150, 140, 'meio do vão') + T(236, 156, 'perto do apoio') +
+    T(160, 50, 'viga vista de lado', 'middle', 'lbl b'),
+    'Viga vista de lado com fissuras verticais no meio do vão e diagonais perto dos apoios');
+
+  D['column'] = () => W(
+    wall(135, 14, 50, 172) + C('M135 56l17 4 14-3 19 3') + C('M135 110l14 4 18-4 18 4') + C('M160 130l-2 20 3 20') +
+    T(200, 62, 'pilar', 'start', 'lbl b') + T(200, 114, 'vista de lado', 'start') +
+    `<path class="arrow" d="M120 56h-30M120 110h-30" marker-end="url(#ah)"/>`,
+    'Pilar visto de frente com fissuras horizontais');
+
+  D['slab'] = () => W(
+    wall(34, 26, 252, 140) + C('M34 26l34 26 14 18') + C('M286 26l-34 28-10 20') + C('M160 26l-4 34 6 30-6 34 2 20') + C('M100 120l30-8 30 4 34-6 36 6', 'crack thin') +
+    T(160, 186, 'laje vista de baixo (teto)'),
+    'Laje vista de baixo com fissuras partindo dos cantos e no centro');
+
+  D['wall'] = () => W(
+    wall(34, 20, 26, 160) +
+    `<rect class="brick" x="60" y="20" width="226" height="160"/>` +
+    `<rect x="130" y="62" width="76" height="60" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"/>` +
+    C('M130 62l-26-30') + C('M206 122l24 34') + C('M61 26l3 40-3 30 3 40-2 30', 'crack thin') +
+    T(47, 14, 'pilar') + T(168, 140, 'janela') + T(250, 100, 'parede de', 'middle') + T(250, 111, 'alvenaria', 'middle'),
+    'Parede de alvenaria ao lado de um pilar com fissuras nos cantos da janela e na junção com o pilar');
+
+  D['superficial'] = () => W(
+    wall(54, 24, 212, 144) +
+    C('M84 48l30 14 24-8 30 16 26-10 34 14M92 92l22 10 30-6 20 18 34-8 28 14M88 134l28-8 22 14 34-6 28 12M116 62l-6 26 8 12-4 30M142 54l8 34-2 22 8 22M172 70l-6 30 10 18M204 76l10 24-6 22 8 24', 'crack thin') +
+    T(160, 188, 'rede de linhas finas e curtas'),
+    'Rede de fissuras superficiais finas e curtas');
+
+  D['through'] = () => W(
+    wall(18, 30, 120, 130) + C('M78 30l-6 30 8 28-6 34 4 38') +
+    `<g transform="translate(164 0)">` + wall(18, 30, 120, 130) + C('M78 30l-6 30 8 28-6 34 4 38') + `</g>` +
+    T(78, 176, 'face A') + T(242, 176, 'face B') +
+    `<path class="arrow" d="M144 96h30" marker-start="url(#ah)" marker-end="url(#ah)"/>` + T(160, 82, 'mesmo', 'middle') + T(160, 126, 'traçado', 'middle') + T(160, 188, ''),
+    'A mesma fissura aparece nos dois lados do elemento');
+
+  D['reappear'] = () => W(
+    wall(40, 22, 240, 144) +
+    `<rect class="patch" x="124" y="66" width="64" height="48"/>` +
+    C('M152 22l-6 34 6 10 -4 24 6 20-4 28 2 28') +
+    `<path class="arrow" d="M70 112l50-18" marker-end="url(#ah)"/>` + T(70, 128, 'reparo', 'start') +
+    T(230, 70, 'a fissura', 'start') + T(230, 82, 'voltou', 'start') + `<path class="arrow" d="M226 76l-40 20" marker-end="url(#ah)"/>`,
+    'Fissura reparada que voltou a aparecer sobre o reparo');
+
+  D['efflo-mech'] = () => W(
+    wall(100, 20, 110, 130) +
+    `<g class="wetf"><circle cx="60" cy="52" r="5"/><circle cx="78" cy="78" r="5"/><circle cx="62" cy="104" r="5"/></g>` +
+    `<path class="arrow" d="M70 52h26M88 78h20M72 104h24" marker-end="url(#ah)"/>` +
+    `<g class="wetf soft"><circle cx="124" cy="62" r="3.5"/><circle cx="146" cy="82" r="3.5"/><circle cx="168" cy="72" r="3.5"/><circle cx="150" cy="104" r="3.5"/><circle cx="178" cy="98" r="3.5"/></g>` +
+    `<path class="whitef" d="M210 52l10 6-4 12 8 8-6 16 8 10-12 8-4-14-6-12z"/>` +
+    `<path class="whitef" d="M210 108l8 4-2 12 6 6-10 4z"/>` +
+    T(50, 134, '1 água entra', 'start') + T(106, 168, '2 dissolve sais', 'start') + T(214, 142, '3 evapora e', 'start') + T(214, 153, 'deixa o sal', 'start') +
+    T(155, 12, 'corte da parede'),
+    'Corte de uma parede: a água entra, dissolve sais, chega à superfície e ao evaporar deixa um depósito branco');
+
+  D['efflo-wall'] = () => W(
+    wall(44, 22, 232, 146) + C('M110 22l-4 36 6 20-4 30') +
+    `<path class="whitef" d="M96 70l12 6-4 12 10 8-6 14 10 8-14 10-6-16-8-10 6-12z"/>` +
+    `<path class="whitef" d="M170 120l16-6 20 4 14 10-10 12-22 2-14-8z"/>` +
+    `<path class="whitef" d="M226 54l10 4-2 10-10-2z"/>` + `<path class="whitef" d="M60 134l10-2 6 8-10 4z"/>` +
+    T(160, 188, 'depósitos brancos na superfície'),
+    'Parede com depósitos brancos irregulares, alguns junto a uma fissura');
+
+  D['rust'] = () => W(
+    wall(70, 18, 180, 148) + `<path class="rust-fill" d="M140 18l22 0 8 40 6 30-8 40-6 38-18 0 6-40-8-34z"/>` +
+    C('M152 18l-3 30 5 24-4 34 3 38') + T(160, 186, 'mancha cor de ferrugem acompanhando uma fissura'),
+    'Mancha de cor marrom alaranjada acompanhando uma fissura');
+
+  D['exposed'] = () => W(
+    wall(40, 24, 240, 140) +
+    `<path class="gap" d="M104 52l54-8 46 10 14 30-8 38-40 12-52-6-18-28z"/>` +
+    `<path class="rust-l" d="M96 78h130M96 110h130"/>` +
+    `<path d="M126 50v66M170 46v70M214 54v64" stroke="var(--ink3)" stroke-width="1.6" fill="none"/>` +
+    T(160, 186, 'concreto faltando e armadura à vista'),
+    'Trecho em que o concreto se soltou e as barras de aço aparecem');
+
+  D['corrosion'] = () => {
+    const P = (x, step) => {
+      const cx = x + 35;
+      let s = wall(x, 28, 70, 112);
+      if (step === 1) s += `<circle class="steel" cx="${cx}" cy="86" r="9"/>`;
+      if (step === 2) {
+        s += `<g class="wetf"><circle cx="${x + 18}" cy="40" r="2.6"/><circle cx="${x + 36}" cy="54" r="2.6"/><circle cx="${x + 54}" cy="44" r="2.6"/><circle cx="${x + 30}" cy="68" r="2.6"/></g>`;
+        s += `<path class="arrow" d="M${x + 16} 34l8 20M${x + 52} 34l-6 24" marker-end="url(#ah)"/>`;
+        s += `<circle class="steel" cx="${cx}" cy="86" r="9" style="fill:var(--rustc);opacity:.75"/>`;
+      }
+      if (step === 3) {
+        s += C(`M${cx} 74l-5-20 5-18`, 'crack') + C(`M${cx + 6} 76l8-18`, 'crack thin');
+        s += `<rect x="${x + 22}" y="28" width="26" height="6" fill="var(--rustc)"/>`;
+        s += `<circle class="rust" cx="${cx}" cy="88" r="13"/>`;
+      }
+      if (step === 4) {
+        s += `<path d="M${x + 6} 28h58l-6 22 -12 18-10 6-14-10-12-6z" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.2"/>`;
+        s += `<circle class="rust" cx="${cx}" cy="86" r="12"/>`;
+        s += `<g class="conc"><path d="M${x + 58} 112l6 4-4 7-6-3z"/><path d="M${x + 40} 124l6 2-2 7-6-2z"/></g>`;
+      }
+      return s;
+    };
+    const L = (x, a, b) => T(x + 35, 160, a) + T(x + 35, 171, b);
+    return W(P(8, 1) + P(86, 2) + P(164, 3) + P(242, 4) + L(8, '1 aço', 'protegido') + L(86, '2 água e', 'agentes') + L(164, '3 ferrugem', 'expande') + L(242, '4 concreto', 'solta') + T(160, 16, 'corte do concreto (superfície no topo)'),
+      'Quatro etapas da corrosão da armadura: aço protegido, chegada de agentes, expansão da ferrugem com fissura e desplacamento');
+  };
+
+  D['cover'] = () => W(
+    wall(90, 22, 140, 150) +
+    `<rect x="110" y="42" width="100" height="110" fill="none" stroke="var(--ink)" stroke-width="2.4"/>` +
+    `<g class="steel"><circle cx="122" cy="54" r="7"/><circle cx="198" cy="54" r="7"/><circle cx="122" cy="140" r="7"/><circle cx="198" cy="140" r="7"/></g>` +
+    `<path class="dim" d="M90 97h20"/><path class="arrow" d="M90 97h20" marker-start="url(#ah)" marker-end="url(#ah)"/>` +
+    T(84, 86, 'cobrimento', 'end') + T(84, 108, '(concreto)', 'end') +
+    T(256, 56, 'barras de aço', 'start') + T(256, 67, '(armadura)', 'start') + T(256, 130, 'estribo', 'start') +
+    `<path class="dim" d="M252 54l-44 0M252 128l-44-4"/>` + T(160, 190, 'corte de uma viga'),
+    'Corte de uma viga mostrando barras de aço, estribo e a camada de cobrimento de concreto');
+
+  D['spall'] = () => W(
+    wall(40, 36, 240, 100) +
+    `<path class="patch" d="M150 36h110v34l-30 6-40-4-40 8z"/>` +
+    `<circle class="steel" cx="150" cy="110" r="8"/><circle class="steel" cx="200" cy="110" r="8"/><circle class="steel" cx="250" cy="110" r="8"/>` +
+    `<g class="conc"><path d="M222 150l12 6-4 12-14-4z"/><path d="M258 162l10 4-4 10-10-3z"/><path d="M190 168l8 3-3 8-8-2z"/></g>` +
+    `<path class="arrow" d="M240 84v28" />` +
+    T(205, 54, 'parte solta ou oca', 'middle') + T(160, 190, 'corte do concreto: camada se destacando'),
+    'Corte do concreto com uma camada superficial solta e fragmentos caindo');
+
+  D['damp'] = () => W(
+    `<rect class="conc" x="24" y="76" width="272" height="34"/><rect class="hatch" x="24" y="76" width="272" height="34"/>` +
+    `<rect class="wetf" x="52" y="62" width="76" height="14"/>` +
+    C('M78 76l-3 12 4 10-3 12', 'crack thin') +
+    `<path class="arrow" d="M76 112q40 8 92 6" fill="none" marker-end="url(#ah)"/>` +
+    `<path class="wetf soft" d="M170 110c4 14 24 22 44 18 18-4 20-14 12-18z"/>` +
+    T(90, 52, 'água entra aqui', 'middle', 'lbl b') + T(198, 152, 'mancha aparece aqui', 'middle', 'lbl b') +
+    T(160, 182, 'a água caminha e a mancha pode surgir longe da origem'),
+    'Corte de uma laje: a água entra por um ponto e a mancha aparece em outro ponto do teto');
+
+  D['deform'] = () => W(
+    tri(50, 124) + tri(270, 124) +
+    `<path class="dim" d="M50 110H270"/>` +
+    `<path class="beam" d="M50 108Q160 152 270 108"/>` +
+    `<path class="arrow" d="M160 112v32" marker-start="url(#ah)" marker-end="url(#ah)"/>` +
+    T(176, 130, 'flecha', 'start', 'lbl b') + T(160, 94, 'linha reta de referência') + T(160, 186, 'desenho exagerado para mostrar a ideia'),
+    'Viga ou laje deformada em relação a uma linha reta de referência');
+
+  D['segregation'] = () => {
+    const agg = [[90, 120, 9], [108, 132, 8], [126, 118, 10], [100, 146, 7], [140, 142, 9], [160, 128, 8], [118, 100, 7], [82, 98, 8], [150, 108, 7], [176, 146, 8], [74, 134, 7]];
+    return W(
+      wall(56, 26, 208, 140) +
+      agg.map(a => `<circle class="agg" cx="${a[0] + 10}" cy="${a[1]}" r="${a[2]}"/>`).join('') +
+      `<g class="void"><ellipse cx="124" cy="126" rx="4" ry="6"/><ellipse cx="150" cy="140" rx="5" ry="4"/><ellipse cx="98" cy="108" rx="3" ry="5"/><ellipse cx="170" cy="118" rx="4" ry="3"/><ellipse cx="190" cy="140" rx="3" ry="5"/></g>` +
+      T(160, 188, 'pedras aparentes e vazios (ninhos de concretagem)'),
+      'Concreto com pedras aparentes e vazios por falta de argamassa');
+  };
+
+  D['unknown'] = () => W(
+    `<circle cx="160" cy="92" r="46" fill="none" stroke="var(--ink)" stroke-width="3"/><text x="160" y="112" text-anchor="middle" font-family="var(--f-head)" font-weight="700" font-size="64" style="fill:var(--ink)">?</text>` +
+    T(160, 176, 'descreva o que você vê nas próximas perguntas'),
+    'Ponto de interrogação: não sei identificar');
+
+  return new Proxy(D, { get: (t, k) => t[k] || t['unknown'] });
+})();
+
+</script>
+<script>
+/* Manual das Patologias do Concreto — aplicação.
+   Roteamento por hash (#cap-2, #biblioteca...), conteúdo vindo de /data, sem dependências externas. */
+(function () {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const md = s => String(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  const plain = s => String(s).replace(/<[^>]+>/g, ' ').replace(/\*\*/g, '');
+  const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } }
+  };
+
+  const CH = window.CHAPTERS, LIB = window.LIB, CR = window.CRACKS, GL = window.GLOSSARY, DG = window.DG;
+  const VIDEOS = window.VIDEOS || [], VCATS = window.VIDEO_CATEGORIES || [];
+  const SITE = 'Manual das Patologias do Concreto';
+  const libById = id => LIB.find(x => x.id === id);
+
+  /* ---------- Ícones ---------- */
+  const ICON = {
+    info: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6M12 7.5v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    warn: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3l10 18H2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v5M12 17.5v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    danger: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 2h8l6 6v8l-6 6H8l-6-6V8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 7v6M12 16v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    ok: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 12.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    tip: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    film: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>',
+    play: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#17120e"/></svg>'
+  };
+  const LV = { 1: 'Observar', 2: 'Avaliação profissional', 3: 'Atenção urgente' };
+  const chip = n => `<span class="lvl l${n}"><b>Nível ${n}</b> ${LV[n]}</span>`;
+  const chips = r => r[0] === r[1] ? chip(r[0]) : chip(r[0]) + chip(r[1]);
+
+  /* ---------- Blocos de conteúdo ---------- */
+  const BL = {
+    p: b => `<p>${md(b.x)}</p>`,
+    ul: b => `<ul class="list">${b.items.map(i => `<li>${md(i)}</li>`).join('')}</ul>`,
+    ol: b => `<ol class="list">${b.items.map(i => `<li>${md(i)}</li>`).join('')}</ol>`,
+    call: b => `<aside class="call ${b.k || 'info'}"><div class="call-h">${ICON[b.k] || ICON.info}<strong>${b.h}</strong></div>${b.x ? `<p>${md(b.x)}</p>` : ''}${b.items ? `<ul class="list">${b.items.map(i => `<li>${md(i)}</li>`).join('')}</ul>` : ''}</aside>`,
+    fig: (b, c) => { if (!b.photo) return ''; c.fig++; return `<figure class="fig"><div class="fig-art"><img class="ph-thumb" src="${esc(b.photo)}" alt="${esc(plain(b.cap))}" loading="lazy"></div><figcaption><span class="mono">FIG. ${c.n}.${c.fig}</span>${md(b.cap)}</figcaption></figure>`; },
+    cmp: b => `<div class="tablewrap"><table class="cmp"><thead><tr>${b.head.map(h => `<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${b.rows.map(r => `<tr>${r.map(c => `<td>${md(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`,
+    four: () => `<div class="four">${window.FOUR.map(f => `<div><h3><span class="mono">${f.n}</span>${f.h}</h3><p>${f.p}</p></div>`).join('')}</div>`,
+    flow: () => `<ol class="flow">${window.FLOW.map(f => `<li><b>${f.h}</b>${f.p}</li>`).join('')}</ol>`,
+    cols: b => `<div class="cols2">${[b.a, b.b].map((x, i) => `<aside class="call ${i === 0 ? 'ok' : 'danger'}" style="margin:0"><div class="call-h">${ICON[i === 0 ? 'ok' : 'danger']}<strong>${x.h}</strong></div><ul class="list">${x.items.map(t => `<li>${md(t)}</li>`).join('')}</ul></aside>`).join('')}</div>`,
+    cracks: () => CR.map((c, i) => crackCard(c, i === 0)).join(''),
+    levels: () => `<div class="levels">${window.LEVELS.map(l => `<div class="level l${l.n}"><div class="side"><span>Nível</span><strong>${l.n}</strong></div><div class="body"><h3>${l.nome}</h3><p style="margin:0">${l.resumo}</p><h4>Exemplos</h4><ul class="list">${l.exemplos.map(e => `<li>${e}</li>`).join('')}</ul><h4>O que fazer</h4><ul class="list">${l.fazer.map(e => `<li>${e}</li>`).join('')}</ul></div></div>`).join('')}</div>`,
+    diy: () => { const d = window.DIY; return `<div class="diy"><div class="yes"><h3>${d.ok.h}</h3><p style="font-size:.95rem">${d.ok.intro}</p><ul class="list">${d.ok.items.map(i => `<li>${i}</li>`).join('')}</ul></div><div class="no"><h3>${d.no.h}</h3><ul class="list">${d.no.items.map(i => `<li>${i}</li>`).join('')}</ul></div></div>`; },
+    who: () => `<div class="who">${window.WHO.map(w => `<div class="${w.emerg ? 'emerg' : ''}"><h3>${w.h}</h3><p>${w.p}</p>${w.emerg ? '<p style="margin-top:8px">Bombeiros: <span class="phone">193</span> &nbsp; Defesa Civil: <span class="phone">199</span></p>' : ''}</div>`).join('')}</div>`,
+    gloss: () => glossaryHTML(''),
+    lib: b => `<div class="grid">${b.ids.map(id => libCard(libById(id))).join('')}</div>`
+  };
+  const renderBlocks = (bl, ctx) => bl.map(b => BL[b.t](b, ctx)).join('');
+
+  function crackCard(c, open) {
+    const ph = c.photos && c.photos[0];
+    return `<details class="acc" id="crack-${c.id}"${open ? ' open' : ''}>
+      <summary${ph ? '' : ' class="nothumb"'}>${ph ? `<div class="thumb"><img class="ph-thumb" src="${esc(ph.src)}" alt="${esc(ph.alt || c.nome)}" loading="lazy"></div>` : ''}<div><h3>${c.nome}</h3><div class="chips">${chips(c.nivel)}</div></div></summary>
+      <div class="acc-b"><dl>
+        <div><dt>O que você está vendo</dt><dd><p>${c.ve}</p></dd></div>
+        <div><dt>Possíveis causas (hipóteses)</dt><dd><ul>${c.causas.map(x => `<li>${x}</li>`).join('')}</ul></dd></div>
+        <div><dt>O que pode significar</dt><dd><p>${c.significa}</p></dd></div>
+        <div><dt>O que observar</dt><dd><ul>${c.observar.map(x => `<li>${x}</li>`).join('')}</ul></dd></div>
+        <div><dt>Nível de atenção provável</dt><dd>${chips(c.nivel)} <p style="margin-top:6px;font-size:.9rem;color:var(--ink2)">Depende do conjunto de sinais. Veja o capítulo 8.</p></dd></div>
+        <div><dt>Próximo passo recomendado</dt><dd><p>${c.proximo}</p></dd></div>
+        <div><dt>Quem procurar</dt><dd><p>${c.quem}</p></dd></div>
+      </dl>${c.photos && c.photos.length ? `<div class="photos">${c.photos.map(p => `<figure><img src="${esc(p.src)}" alt="${esc(p.alt || c.nome)}" loading="lazy"><figcaption>${esc(p.caption || '')}${p.credit ? ' · ' + esc(p.credit) : ''}</figcaption></figure>`).join('')}</div>` : ''}</div></details>`;
+  }
+  function libArt(m) {
+    const p = m.photos && m.photos[0];
+    return p ? `<div class="card-art"><img class="ph-thumb" src="${esc(p.src)}" alt="${esc(p.alt || m.nome)}" loading="lazy"></div>` : '';
+  }
+  function libCard(m) {
+    return `<a class="card" href="#manifestacao-${m.id}">${libArt(m)}<div class="card-b"><h3>${m.nome}</h3><p>${m.short}</p><span class="card-go">Entenda o que pode ser →</span></div></a>`;
+  }
+  function glossaryHTML(q) {
+    const nq = norm(q);
+    const items = GL.filter(g => !nq || norm(g.t + ' ' + g.d).includes(nq));
+    if (!items.length) return '<p>Nenhum termo encontrado.</p>';
+    return `<dl class="gl">${items.map(g => `<div id="gl-${norm(g.t).replace(/ /g, '-')}"><dt>${g.t}</dt><dd>${g.d}</dd></div>`).join('')}</dl>`;
+  }
+
+  /* ---------- Vídeos ---------- */
+  const vById = id => VIDEOS.find(v => v.id === id);
+  const catName = id => (VCATS.find(c => c.id === id) || {}).nome || id;
+  function vCard(v) {
+    const thumb = v.thumb ? `<img src="${esc(v.thumb)}" alt="" loading="lazy">` : '';
+    return `<button type="button" class="card" data-video="${esc(v.id)}"><div class="vthumb${v.thumb ? '' : ' ph'}">${thumb}<span class="play">${ICON.play}</span>${v.duration ? `<span class="dur">${esc(v.duration)}</span>` : ''}</div><div class="card-b"><span class="mono" style="color:var(--accent-ink)">${esc(catName(v.category)).toUpperCase()}</span><h3>${esc(v.title)}</h3><p>${esc(v.desc || '')}</p><span class="card-go">Assistir →</span></div></button>`;
+  }
+  function videoSlotFor(filter, label) {
+    const list = VIDEOS.filter(filter);
+    if (list.length) return `<div class="vbox"><h2>Aprenda também em vídeo</h2>${list.map(vCard).join('')}</div>`;
+    return `<div class="vslot">${ICON.film}<span>${label || 'Este assunto contará com vídeo explicativo em breve. O conteúdo escrito abaixo está completo.'}</span></div>`;
+  }
+  function openVideo(id) {
+    const v = vById(id); if (!v) return;
+    closeVideo();
+    let player;
+    if (v.type === 'youtube') player = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.src)}" title="${esc(v.title)}" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    else if (v.type === 'vimeo') player = `<iframe src="https://player.vimeo.com/video/${encodeURIComponent(v.src)}" title="${esc(v.title)}" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    else player = `<video controls preload="metadata" ${v.thumb ? `poster="${esc(v.thumb)}"` : ''} src="${esc(v.src)}">Seu navegador não reproduz este vídeo.</video>`;
+    const m = document.createElement('div');
+    m.className = 'vmodal'; m.id = 'vmodal'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true'); m.setAttribute('aria-label', v.title);
+    m.innerHTML = `<div class="vmodal-in"><div class="vmodal-x"><button type="button" class="btn sm" data-close-video>Fechar ✕</button></div><div class="vmodal-player">${player}</div><div class="vmodal-meta"><h3>${esc(v.title)}</h3><p>${esc(v.desc || '')}</p><p class="mono">${esc(catName(v.category))}${v.duration ? ' · ' + esc(v.duration) : ''}${v.date ? ' · ' + esc(v.date) : ''}</p>${v.chapter ? `<a href="#cap-${v.chapter}" data-close-video>Ler o capítulo ${v.chapter} →</a>` : ''}</div></div>`;
+    document.body.appendChild(m);
+    m._prev = document.activeElement;
+    $('[data-close-video]', m).focus();
+  }
+  function closeVideo() { const m = $('#vmodal'); if (m) { const p = m._prev; m.remove(); if (p && p.focus) p.focus(); } }
+
+  /* ---------- Busca ---------- */
+  const STOP = new Set('de do da dos das no na nos nas em a o e os as um uma uns umas com que para por meu minha meus minhas tem esta esse essa isso ao aos se foi ser ha mais muito'.split(' '));
+  const SYN = {
+    rachadura: ['fissura', 'trinca'], trinca: ['fissura', 'rachadura'], fissura: ['trinca', 'rachadura'], rachando: ['fissura', 'rachadura'],
+    ferro: ['armadura', 'vergalhao'], vergalhao: ['armadura', 'ferro'], ferragem: ['armadura'],
+    caindo: ['desplacamento', 'soltando'], soltando: ['desplacamento', 'caindo'], esfarelando: ['desplacamento'], lasca: ['desplacamento'],
+    barriga: ['flecha', 'deformacao', 'abaulada'], abaulada: ['flecha', 'deformacao', 'barriga'], arqueada: ['flecha', 'deformacao'],
+    salitre: ['eflorescencia'], branca: ['eflorescencia'], branco: ['eflorescencia'],
+    ferrugem: ['corrosao', 'armadura'], enferrujado: ['ferrugem', 'corrosao'], marrom: ['ferrugem'],
+    infiltracao: ['umidade', 'vazamento'], goteira: ['infiltracao', 'umidade'], vazamento: ['infiltracao', 'umidade'], mofo: ['umidade'],
+    teto: ['laje'], bicheira: ['segregacao'], brita: ['segregacao'], desnivelado: ['deformacao', 'recalque'], afundando: ['recalque']
+  };
+  const stem = t => t.length > 4 && t.endsWith('s') ? t.slice(0, -1) : t;
+  const tokens = q => norm(q).split(' ').filter(t => t && !STOP.has(t)).map(stem);
+  let INDEX = null;
+  function buildIndex() {
+    INDEX = [];
+    CH.forEach(c => c.sections.forEach((s, i) => {
+      const txt = s.blocks.map(b => {
+        if (b.x) return b.x; if (b.items) return b.items.join(' ');
+        if (b.rows) return b.rows.map(r => r.join(' ')).join(' ');
+        if (b.t === 'cracks') return CR.map(x => x.nome + ' ' + x.ve).join(' ');
+        if (b.t === 'levels') return window.LEVELS.map(l => l.nome + ' ' + l.exemplos.join(' ')).join(' ');
+        if (b.t === 'diy') return window.DIY.ok.items.concat(window.DIY.no.items).join(' ');
+        if (b.t === 'who') return window.WHO.map(w => w.h + ' ' + w.p).join(' ');
+        if (b.cap) return b.cap; return '';
+      }).join(' ');
+      INDEX.push({ kind: 'Capítulo ' + c.n, title: c.short === c.title ? c.title : c.title, sub: s.h, url: '#' + c.slug, text: plain(txt), kw: c.title + ' ' + s.h });
+    }));
+    LIB.forEach(m => INDEX.push({ kind: 'Manifestação', title: m.nome, sub: m.short, url: '#manifestacao-' + m.id, text: plain([m.ve, m.significa, ...m.causas, ...m.observar, ...m.agora, ...m.evitar, m.quem].join(' ')), kw: m.kw + ' ' + m.nome }));
+    CR.forEach(c => INDEX.push({ kind: 'Guia de fissuras', title: c.nome, sub: c.ve, url: '#cap-2', text: plain([c.ve, c.significa, ...c.causas, ...c.observar, c.proximo, c.quem].join(' ')), kw: c.nome }));
+    GL.forEach(g => INDEX.push({ kind: 'Glossário', title: g.t, sub: g.d, url: '#cap-10', text: g.d, kw: g.t }));
+    VIDEOS.forEach(v => INDEX.push({ kind: 'Vídeo', title: v.title, sub: v.desc || '', url: '#videos', text: v.desc || '', kw: v.category + ' ' + v.title }));
+    INDEX.push({ kind: 'Ferramenta', title: 'O que você encontrou?', sub: 'Responda perguntas simples e receba uma orientação educativa.', url: '#identificar', text: 'identificar triagem ferramenta o que encontrei nivel de atencao', kw: 'identificar triagem ferramenta' });
+    INDEX.push({ kind: 'Ferramenta', title: 'Antes de chamar um profissional, registre isso', sub: 'Checklist para fotografar e anotar.', url: '#checklist', text: 'checklist registrar fotografar anotar profissional', kw: 'checklist registro fotos' });
+    INDEX.forEach(e => { e.nt = norm(e.title + ' ' + e.sub); e.nk = norm(e.kw); e.nx = norm(e.text); });
+  }
+  function search(q) {
+    if (!INDEX) buildIndex();
+    const nq = norm(q); const base = tokens(q); if (!base.length) return [];
+    const exp = []; base.forEach(t => (SYN[t] || []).forEach(s => { if (!base.includes(stem(s))) exp.push(stem(s)); }));
+    const res = [];
+    INDEX.forEach(e => {
+      let sc = 0;
+      base.forEach(t => { if (e.nt.includes(t)) sc += 6; if (e.nk.includes(t)) sc += 5; const m = e.nx.split(t).length - 1; sc += Math.min(m, 3); });
+      exp.forEach(t => { if (e.nt.includes(t)) sc += 3; if (e.nk.includes(t)) sc += 2.5; const m = e.nx.split(t).length - 1; sc += Math.min(m, 2) * 0.5; });
+      if (nq.length > 3 && (e.nt.includes(nq) || e.nk.includes(nq))) sc += 8;
+      if (sc > 0) res.push({ e, sc });
+    });
+    res.sort((a, b) => b.sc - a.sc);
+    const seen = new Set(), out = [];
+    for (const r of res) { const k = r.e.url + r.e.title; if (seen.has(k)) continue; seen.add(k); out.push(r); if (out.length >= 14) break; }
+    return out;
+  }
+  function snippet(e, terms) {
+    const t = e.text; const nt = norm(t);
+    let at = -1; for (const w of terms) { at = nt.indexOf(w); if (at >= 0) break; }
+    if (at < 0) return esc((e.sub || t).slice(0, 150));
+    const start = Math.max(0, at - 50); let s = t.slice(start, start + 190);
+    return (start > 0 ? '…' : '') + esc(s) + '…';
+  }
+
+  /* ---------- Páginas ---------- */
+  let lastQuery = '';
+  const PAGES = {};
+
+  PAGES.inicio = () => ({
+    title: SITE, desc: document.querySelector('meta[name="description"]').content, wide: true,
+    html: `<div class="hero">
+      <p class="eyebrow">Guia para pessoas comuns</p>
+      <h1>O que está acontecendo com o seu concreto?</h1>
+      <p class="lead">Entenda os sinais, reconheça possíveis problemas e saiba qual é o próximo passo.</p>
+      <form class="bigsearch" id="homeSearch" role="search"><label class="sr" for="homeQ">Descreva o que você viu</label><input id="homeQ" type="search" placeholder="Ex.: mancha branca no concreto" autocomplete="off"><button class="btn primary" type="submit">Pesquisar</button></form>
+      <p class="try">Experimente:</p>
+      <div class="chips">${['mancha branca no concreto', 'fissura diagonal na viga', 'ferrugem no teto', 'concreto caindo', 'rachadura no pilar', 'laje com barriga'].map(q => `<a class="chip" href="#busca" data-q="${q}">${q}</a>`).join('')}</div>
+      <div class="disc">${ICON.info}<span>Este site é um <strong>guia educativo</strong> e não substitui uma inspeção presencial feita por profissional habilitado. Em caso de queda de concreto, estalos ou deformação súbita, afaste-se e ligue para os Bombeiros (193) ou a Defesa Civil (199).</span></div>
+    </div>
+    <section class="sec"><h2>O que você está vendo?</h2><div class="grid shortcuts">${LIB.map(m => `<a class="card" href="#manifestacao-${m.id}">${libArt(m)}<div class="card-b"><h3>${m.nome}</h3></div></a>`).join('')}</div></section>
+    <section class="sec"><h2>Encontrou um problema? Comece por aqui.</h2>${BL.flow()}<div class="navrow"><a class="btn primary" href="#identificar">Usar a ferramenta “O que você encontrou?”</a><a class="btn" href="#checklist">Registrar antes de chamar um profissional</a></div></section>
+    <section class="sec"><h2>Três níveis de atenção</h2><p>Uma triagem educativa para decidir o próximo passo. Não é diagnóstico nem garantia de segurança.</p><div class="three">${window.LEVELS.map(l => `<div class="lcard l${l.n}">${chip(l.n)}<h3>${l.nome}</h3><p>${l.resumo}</p></div>`).join('')}</div><a href="#cap-8">Ler o capítulo 8 →</a></section>
+    <section class="sec"><h2>Posso consertar sozinho?</h2><p>Algumas tarefas de manutenção são simples. Outras nunca devem ser feitas sem avaliação profissional. Saiba a diferença.</p><a class="btn" href="#cap-9">Ver o capítulo 9</a></section>
+    <section class="sec"><h2>O manual, capítulo por capítulo</h2><div class="grid">${CH.map(c => `<a class="card" href="#${c.slug}"><div class="card-b"><span class="mono" style="color:var(--accent-ink)">CAPÍTULO ${String(c.n).padStart(2, '0')}</span><h3>${c.title}</h3><p>${c.lead}</p></div></a>`).join('')}</div></section>
+    <section class="sec"><h2>Aprenda também em vídeo</h2>${VIDEOS.length ? `<div class="grid">${VIDEOS.slice(-3).reverse().map(vCard).join('')}</div><a class="btn" href="#videos">Ver todos os vídeos</a>` : `<div class="vslot">${ICON.film}<span>A biblioteca de vídeos educativos está em preparação.</span></div>`}</section>`
+  });
+
+  function chapterPage(c) {
+    const ctx = { n: c.n, fig: 0 };
+    const secs = c.sections.map((s, i) => `<section class="sec" id="sec-${i}"><h2>${s.h}</h2>${renderBlocks(s.blocks, ctx)}</section>`);
+    const vid = c.video ? videoSlotFor(v => v.chapter === c.n || v.category === c.video) : '';
+    const prev = CH[c.n - 2], next = CH[c.n];
+    return {
+      title: `Capítulo ${c.n}: ${c.title} · ${SITE}`, desc: c.desc, progress: true,
+      html: `<p class="eyebrow">Capítulo ${String(c.n).padStart(2, '0')} de ${CH.length}</p><h1>${c.title}</h1><p class="lead">${c.lead}</p>
+        ${c.sections.length > 1 ? `<nav class="toc" aria-label="Neste capítulo">${c.sections.map((s, i) => `<button type="button" class="linklike" data-scroll="sec-${i}">${s.h}</button>`).join('')}</nav>` : ''}
+        ${vid}${secs.join('')}
+        <nav class="pager" aria-label="Navegação entre capítulos">${prev ? `<a class="prev" href="#${prev.slug}"><small>← Capítulo anterior</small>${prev.title}</a>` : '<span></span>'}${next ? `<a class="next" href="#${next.slug}"><small>Próximo capítulo →</small>${next.title}</a>` : ''}</nav>
+        <p class="foot">Conteúdo educativo. Não substitui inspeção presencial por profissional habilitado.</p>`
+    };
+  }
+
+  PAGES.manifestacao = id => {
+    const m = libById(id); if (!m) return PAGES.naoencontrada();
+    const vids = videoSlotFor(v => v.manifest === m.id, 'Vídeo sobre este assunto em preparação.');
+    const photos = m.photos && m.photos.length
+      ? `<div class="photos">${m.photos.map(p => `<figure><img src="${esc(p.src)}" alt="${esc(p.alt || m.nome)}" loading="lazy"><figcaption>${esc(p.caption || '')}${p.credit ? ' · ' + esc(p.credit) : ''}</figcaption></figure>`).join('')}</div>`
+      : '';
+    const L = a => `<ul class="list">${a.map(x => `<li>${x}</li>`).join('')}</ul>`;
+    return {
+      title: `${m.nome} · ${SITE}`, desc: m.short + ' ' + m.significa.slice(0, 110),
+      html: `<p class="crumbs"><a href="#biblioteca">Biblioteca visual</a> / ${m.nome}</p>
+        <h1>${m.nome}</h1><p class="lead">${m.short}</p>
+        <div class="navrow" style="margin-top:14px">${chips(m.nivel)}</div>
+        ${photos}
+        <div class="kv">
+          <div><h3>O que você pode estar vendo</h3><p>${m.ve}</p></div>
+          <div><h3>Causas possíveis (hipóteses)</h3>${L(m.causas)}</div>
+          <div><h3>O que pode significar</h3><p>${m.significa}</p></div>
+          <div><h3>O que observar</h3>${L(m.observar)}</div>
+          <div><h3>Nível de atenção provável</h3><div class="chips">${chips(m.nivel)}</div><p style="margin-top:8px;color:var(--ink2);font-size:.93rem">Depende do conjunto de sinais. Em caso de dúvida, use a ferramenta de identificação.</p></div>
+          <div><h3>O que fazer agora</h3>${L(m.agora)}</div>
+          <div><h3>O que evitar</h3>${L(m.evitar)}</div>
+          <div><h3>Quem procurar</h3><p>${m.quem}</p></div>
+        </div>
+        ${vids}
+        <div class="navrow"><a class="btn primary" href="#identificar">Descobrir o nível de atenção</a><a class="btn" href="#cap-${m.cap}">Ler o capítulo ${m.cap}</a><a class="btn" href="#checklist">Registrar</a></div>
+        <p class="foot">Conteúdo educativo. Não substitui inspeção presencial por profissional habilitado.</p>`
+    };
+  };
+
+  PAGES.biblioteca = () => ({
+    title: `Biblioteca visual · ${SITE}`, desc: 'Biblioteca de manifestações patológicas do concreto: fissuras, eflorescência, ferrugem, concreto soltando, armadura exposta, infiltração, deformações e segregação.', wide: true,
+    html: `<p class="eyebrow">Biblioteca visual</p><h1>Manifestações patológicas</h1><p class="lead">Escolha o que mais se parece com o que você observou. Imagens ajudam a reconhecer padrões, mas não confirmam a causa.</p>
+      <div class="grid">${LIB.map(libCard).join('')}</div>`
+  });
+
+  PAGES.videos = () => {
+    const filter = (cat, q) => VIDEOS.filter(v => (!cat || v.category === cat) && (!q || norm(v.title + ' ' + (v.desc || '') + ' ' + catName(v.category)).includes(norm(q))));
+    return {
+      title: `Biblioteca de vídeos · ${SITE}`, desc: 'Vídeos educativos sobre fissuras, eflorescências, umidade, corrosão, deterioração e segurança estrutural.', wide: true,
+      html: `<p class="eyebrow">Aprenda também em vídeo</p><h1>Biblioteca de vídeos</h1><p class="lead">Vídeos que complementam o texto do manual. Eles nunca substituem as informações escritas.</p>
+        ${VIDEOS.length ? `<div class="filters"><label class="sr" for="vq">Buscar vídeos</label><input id="vq" type="search" placeholder="Buscar vídeo…"></div><div class="chips" id="vcats"><button type="button" class="chip on" data-vcat="">Todos</button>${VCATS.map(c => `<button type="button" class="chip" data-vcat="${c.id}">${c.nome}</button>`).join('')}</div><div class="grid" id="vlist">${filter('', '').map(vCard).join('')}</div>`
+          : `<div class="empty"><h3>Os primeiros vídeos estão em produção</h3><p>Assim que forem publicados, eles aparecerão aqui, organizados por assunto, e também dentro dos capítulos do manual.</p><div class="chips">${VCATS.map(c => `<span class="chip" style="cursor:default">${c.nome}</span>`).join('')}</div><p style="margin-top:16px;margin-bottom:0">Enquanto isso, todo o conteúdo está disponível em texto nos <a href="#cap-1">capítulos do manual</a>.</p></div>`}`,
+      after() {
+        if (!VIDEOS.length) return;
+        let cat = '', q = '';
+        const upd = () => { const l = filter(cat, q); $('#vlist').innerHTML = l.length ? l.map(vCard).join('') : '<p>Nenhum vídeo encontrado para esse filtro.</p>'; };
+        $('#vq').addEventListener('input', e => { q = e.target.value; upd(); });
+        $('#vcats').addEventListener('click', e => { const b = e.target.closest('[data-vcat]'); if (!b) return; cat = b.dataset.vcat; $$('#vcats .chip').forEach(x => x.classList.toggle('on', x === b)); upd(); });
+      }
+    };
+  };
+
+  PAGES.busca = () => ({
+    title: `Pesquisar · ${SITE}`, desc: 'Pesquise sintomas, manifestações e termos do manual.',
+    html: `<p class="eyebrow">Pesquisa</p><h1>Pesquisar no manual</h1>
+      <form class="bigsearch" id="pageSearch" role="search"><label class="sr" for="pageQ">Pesquisar</label><input id="pageQ" type="search" value="${esc(lastQuery)}" placeholder="Ex.: ferrugem no teto" autocomplete="off"><button class="btn primary" type="submit">Pesquisar</button></form>
+      <div class="chips">${['mancha branca no concreto', 'fissura diagonal na viga', 'ferrugem no teto', 'concreto caindo', 'rachadura no pilar', 'laje com barriga'].map(q => `<a class="chip" href="#busca" data-q="${q}">${q}</a>`).join('')}</div>
+      <div id="resultsBox" aria-live="polite"></div>`,
+    after() {
+      const box = $('#resultsBox');
+      const run = () => {
+        const q = $('#pageQ').value; lastQuery = q;
+        if (!norm(q)) { box.innerHTML = ''; return; }
+        const terms = tokens(q), r = search(q);
+        box.innerHTML = r.length ? `<p class="try" style="margin-top:20px">${r.length} resultado${r.length > 1 ? 's' : ''} mais relevante${r.length > 1 ? 's' : ''}:</p><ul class="results">${r.map(x => `<li><a href="${x.e.url}"><div class="rk">${x.e.kind}</div><div class="rt">${esc(x.e.title)}</div><p>${snippet(x.e, terms)}</p></a></li>`).join('')}</ul>`
+          : `<p style="margin-top:20px">Nada encontrado para “${esc(q)}”. Tente outras palavras, como “fissura”, “ferrugem” ou “umidade”, ou use a <a href="#identificar">ferramenta de identificação</a>.</p>`;
+      };
+      $('#pageSearch').addEventListener('submit', e => { e.preventDefault(); run(); });
+      $('#pageQ').addEventListener('input', run);
+      run();
+      if (!lastQuery) $('#pageQ').focus();
+    }
+  });
+
+  /* ----- Ferramenta "O que você encontrou?" ----- */
+  const OBS = [
+    { id: 'linha', t: 'Linha fina no concreto', dg: 'crack-vertical', lib: 'fissuras' },
+    { id: 'diagonal', t: 'Fissura diagonal', dg: 'crack-diagonal', lib: 'fissuras' },
+    { id: 'branca', t: 'Mancha branca', dg: 'efflo-wall', lib: 'eflorescencia' },
+    { id: 'marrom', t: 'Mancha marrom ou ferrugem', dg: 'rust', lib: 'ferrugem' },
+    { id: 'soltando', t: 'Concreto soltando', dg: 'spall', lib: 'desplacamento' },
+    { id: 'ferro', t: 'Ferro aparecendo', dg: 'exposed', lib: 'armadura-exposta' },
+    { id: 'abaulada', t: 'Parte abaulada ou deformada', dg: 'deform', lib: 'deformacao' },
+    { id: 'infiltracao', t: 'Infiltração', dg: 'damp', lib: 'infiltracao' },
+    { id: 'nsei', t: 'Não sei identificar', dg: 'unknown', lib: 'fissuras' }
+  ];
+  const GATE = [
+    { id: 'caindo', t: 'Estão caindo pedaços de concreto' },
+    { id: 'ruido', t: 'Há estalos ou ruídos incomuns na estrutura' },
+    { id: 'defrec', t: 'Uma deformação apareceu há pouco tempo ou está aumentando' },
+    { id: 'rapido', t: 'Uma fissura surgiu ou aumentou rapidamente, em dias' },
+    { id: 'instavel', t: 'Parece haver inclinação ou instabilidade em pilar, viga, laje ou parede' }
+  ];
+  const LOC = [{ id: 'viga', t: 'Viga' }, { id: 'pilar', t: 'Pilar' }, { id: 'laje', t: 'Laje (teto ou piso)' }, { id: 'marquise', t: 'Marquise, varanda, escada ou garagem' }, { id: 'parede', t: 'Parede' }, { id: 'nsei', t: 'Não sei' }];
+  const OTH = [{ id: 'ferrugem', t: 'Ferrugem' }, { id: 'branca', t: 'Manchas brancas' }, { id: 'umidade', t: 'Umidade ou infiltração' }, { id: 'deformacao', t: 'Alguma parte torta ou abaulada' }, { id: 'portas', t: 'Portas ou janelas passaram a travar' }, { id: 'fissuras', t: 'Várias fissuras na região' }];
+  const STEPS = ['gate', 'obs', 'loc', 'tempo', 'aum', 'umi', 'sol', 'outros'];
+  let TS = { step: 0, gate: [], obs: null, loc: null, tempo: null, aum: null, umi: null, sol: null, outros: [] };
+  const STRUCT = ['viga', 'pilar', 'laje', 'marquise'];
+
+  function triage(S) {
+    const why = [];
+    if (S.gate.length) return { level: 3, urgent: true, why: ['Você indicou um ou mais sinais de possível gravidade.'] };
+    const struct = STRUCT.includes(S.loc);
+    const base = { linha: 1, diagonal: 2, branca: 1, marrom: 2, soltando: 2, ferro: 2, abaulada: 2, infiltracao: 1, nsei: 1 }[S.obs] || 1;
+    let L = base;
+    if (base === 2) why.push('O tipo de sinal escolhido costuma justificar avaliação profissional.');
+    const grow = S.aum === 'sim', recent = S.tempo === 'recente';
+    const oth = S.outros.filter(x => x !== 'nenhum');
+    const up = (n, m) => { if (n > L) L = n; if (m && !why.includes(m)) why.push(m); };
+    if (S.sol === 'sim' && S.obs !== 'soltando') up(2, 'Há concreto se soltando.');
+    if (grow) up(2, 'O sinal parece estar aumentando.');
+    if (S.umi === 'sim' && ['linha', 'diagonal', 'marrom', 'ferro', 'soltando'].includes(S.obs)) up(2, 'Há umidade junto do sinal.');
+    if (oth.length) up(2, 'Há outros sinais associados.');
+    if (struct && S.obs === 'linha' && S.tempo !== 'antigo') up(2, 'Fissura recente em viga, pilar, laje ou marquise merece avaliação.');
+    if (struct && S.obs === 'diagonal') up(2, 'Fissura diagonal em elemento estrutural.');
+    if (S.obs === 'abaulada' && (grow || recent)) up(3, 'Deformação recente ou crescente.');
+    if ((S.obs === 'linha' || S.obs === 'diagonal') && grow && recent) up(3, 'Fissura recente que está aumentando.');
+    if (S.obs === 'soltando' && struct && (grow || recent)) up(3, 'Concreto soltando em elemento estrutural, de forma recente ou crescente.');
+    if (S.obs === 'ferro' && struct && (grow || S.sol === 'sim')) up(3, 'Armadura exposta com concreto soltando em elemento estrutural.');
+    if (struct && oth.length >= 2) up(3, 'Vários sinais ao mesmo tempo em elemento estrutural.');
+    if (oth.includes('portas') && ['linha', 'diagonal', 'abaulada'].includes(S.obs)) up(3, 'Portas ou janelas travando junto com fissuras ou deformação.');
+    if (L === 1) why.push('Não foram indicados sinais adicionais de agravamento nas respostas.');
+    return { level: L, urgent: false, why };
+  }
+  const ACTIONS = {
+    1: ['Fotografar de perto e mostrando o contexto, com data.', 'Anotar o local exato.', 'Acompanhar a evolução, por exemplo a cada algumas semanas e após chuvas fortes, comparando fotos.', 'Não fazer intervenções.', 'Procurar orientação profissional se persistir, aumentar ou surgirem novos sinais.'],
+    2: ['Registrar o que viu (a página de checklist ajuda).', 'Agendar avaliação presencial com engenheiro civil habilitado.', 'Não fazer reparos antes dessa avaliação.', 'Se houver concreto solto, limitar o uso e a passagem pelo local.'],
+    3: ['Afastar-se da área afetada.', 'Impedir o acesso de outras pessoas, sem se colocar em risco.', 'Não tocar nem remover concreto.', 'Buscar profissional com urgência. Avisar síndico ou proprietário.', 'Em risco imediato (queda de pedaços, estalos, deformação súbita, instabilidade): Bombeiros 193 ou Defesa Civil 199.']
+  };
+  const label = (arr, id) => (arr.find(x => x.id === id) || {}).t || '';
+
+  function toolHTML() {
+    const S = TS, name = STEPS[S.step];
+    const pct = Math.round((S.step / STEPS.length) * 100);
+    const head = `<div class="stephead"><span>Pergunta ${S.step + 1} de ${STEPS.length}</span><span>${pct}%</span></div><div class="prog"><i style="width:${pct}%"></i></div>`;
+    const back = S.step > 0 ? `<button type="button" class="btn sm" data-t="back">← Voltar</button>` : '';
+    const single = (key, q, h, opts, extra = '') => `${head}<h2 class="q">${q}</h2><p class="qh">${h}</p><div class="opts list1">${opts.map(o => `<button type="button" class="opt${S[key] === o.id ? ' on' : ''}" data-t="pick" data-k="${key}" data-v="${o.id}"><span class="t">${o.t}${o.s ? `<small>${o.s}</small>` : ''}</span></button>`).join('')}</div><div class="navrow">${back}</div>${extra}`;
+    const multi = (key, q, h, opts, none) => `${head}<h2 class="q">${q}</h2><p class="qh">${h}</p><div class="opts list1">${opts.map(o => `<button type="button" class="opt${S[key].includes(o.id) ? ' on' : ''}" role="checkbox" aria-checked="${S[key].includes(o.id)}" data-t="toggle" data-k="${key}" data-v="${o.id}"><span class="box"></span><span class="t">${o.t}</span></button>`).join('')}</div><div class="navrow">${back}<button type="button" class="btn primary" data-t="next">${none}</button></div>`;
+    switch (name) {
+      case 'gate': return `${head}<h2 class="q">Alguma destas situações está acontecendo agora?</h2><p class="qh">Marque o que for verdade. Se marcar qualquer uma, vamos direto às orientações de segurança.</p><div class="opts list1">${GATE.map(o => `<button type="button" class="opt${S.gate.includes(o.id) ? ' on' : ''}" role="checkbox" aria-checked="${S.gate.includes(o.id)}" data-t="toggle" data-k="gate" data-v="${o.id}"><span class="box"></span><span class="t">${o.t}</span></button>`).join('')}</div><div class="navrow"><button type="button" class="btn primary" data-t="gatego">${S.gate.length ? 'Ver orientações de segurança' : 'Nenhuma delas. Continuar'}</button></div>`;
+      case 'obs': return `${head}<h2 class="q">O que você encontrou?</h2><p class="qh">Escolha a opção que mais se parece com o que você viu.</p><div class="opts">${OBS.map(o => `<button type="button" class="opt${S.obs === o.id ? ' on' : ''}" data-t="pick" data-k="obs" data-v="${o.id}"><span class="t">${o.t}</span></button>`).join('')}</div><div class="navrow">${back}</div>`;
+      case 'loc': return single('loc', 'Onde está localizado?', 'Se não tiver certeza, escolha “Não sei”.', LOC);
+      case 'tempo': return single('tempo', 'O sinal é recente ou já existe há muito tempo?', 'Pense em quando você percebeu pela primeira vez.', [{ id: 'recente', t: 'Recente', s: 'Surgiu há dias ou poucas semanas' }, { id: 'meses', t: 'Alguns meses' }, { id: 'antigo', t: 'Existe há muito tempo', s: 'Um ano ou mais' }, { id: 'nsei', t: 'Não sei' }]);
+      case 'aum': return single('aum', 'Parece estar aumentando?', 'Compare com fotografias antigas, se tiver.', [{ id: 'sim', t: 'Sim, parece maior ou mais comprido' }, { id: 'nao', t: 'Não, parece igual' }, { id: 'nsei', t: 'Não sei' }]);
+      case 'umi': return single('umi', 'Existe umidade no local?', 'Manchas escuras, parede úmida, goteira, tinta estufada ou cheiro de mofo.', [{ id: 'sim', t: 'Sim' }, { id: 'nao', t: 'Não' }, { id: 'nsei', t: 'Não sei' }]);
+      case 'sol': return single('sol', 'O concreto está se soltando?', 'Observe sem tocar nem bater. Você não precisa se aproximar do trecho.', [{ id: 'sim', t: 'Sim, há partes soltas, caindo ou esfarelando' }, { id: 'nao', t: 'Não' }, { id: 'nsei', t: 'Não sei' }]);
+      case 'outros': return multi('outros', 'Há outros sinais por perto?', 'Marque todos que observar.', OTH, 'Ver orientação');
+    }
+  }
+  function resultHTML() {
+    const S = TS, r = triage(S), o = OBS.find(x => x.id === S.obs) || OBS[8], m = libById(o.lib);
+    const names = { 1: 'Observar', 2: 'Avaliação profissional', 3: 'Atenção urgente' };
+    const recap = [o.t, S.loc && S.loc !== 'nsei' ? label(LOC, S.loc) : '', S.tempo === 'recente' ? 'Recente' : S.tempo === 'antigo' ? 'Antigo' : '', S.aum === 'sim' ? 'Parece aumentar' : '', S.umi === 'sim' ? 'Com umidade' : '', S.sol === 'sim' ? 'Concreto soltando' : '', ...S.outros.map(x => label(OTH, x)), ...S.gate.map(x => label(GATE, x))].filter(Boolean);
+    const urgent = r.level === 3 ? `<div class="urgent"><h3>Segurança primeiro</h3><ul class="list">${ACTIONS[3].map(a => `<li>${a}</li>`).join('')}</ul><p style="margin:14px 0 0">Bombeiros: <span class="phone">193</span> &nbsp; Defesa Civil: <span class="phone">199</span></p></div>` : '';
+    return `<div class="result">
+      <div class="banner l${r.level}"><strong>${r.level}</strong><div><h2>Nível ${r.level}: ${names[r.level]}</h2><p>Orientação educativa e prudente, a partir do que você respondeu. Não é diagnóstico estrutural.</p></div></div>
+      ${urgent}
+      <div class="rsec"><h3>O que você descreveu</h3><div class="recap">${recap.map(x => `<span>${esc(x)}</span>`).join('')}</div></div>
+      ${S.gate.length ? '' : `<div class="rsec"><h3>Manifestação possivelmente relacionada</h3><p style="margin:0"><a href="#manifestacao-${m.id}"><strong>${m.nome}</strong></a>. ${m.short}</p></div>
+      <div class="rsec"><h3>Causas possíveis (hipóteses, não confirmadas)</h3><ul class="list">${m.causas.map(x => `<li>${x}</li>`).join('')}</ul></div>`}
+      <div class="rsec"><h3>Por que este nível</h3><ul class="list">${r.why.map(x => `<li>${x}</li>`).join('')}</ul></div>
+      ${r.level === 3 ? '' : `<div class="rsec"><h3>O que fazer agora</h3><ul class="list">${ACTIONS[r.level].map(a => `<li>${a}</li>`).join('')}</ul></div>`}
+      <div class="rsec"><h3>O que evitar</h3><ul class="list">${(S.gate.length ? ['Tocar, bater ou remover concreto.', 'Ficar sob o trecho afetado.', 'Reparar por conta própria.'] : m.evitar).map(x => `<li>${x}</li>`).join('')}</ul></div>
+      <div class="rsec"><h3>Quem procurar</h3><p style="margin:0">${r.level === 3 ? 'Engenheiro estrutural ou civil com urgência. Em risco imediato, Bombeiros (193) ou Defesa Civil (199).' : r.level === 2 ? 'Engenheiro civil habilitado, de preferência com experiência em estruturas ou inspeção predial. ' + (S.obs === 'infiltracao' ? 'Depois da avaliação, um profissional de impermeabilização, se for o caso.' : '') : m.quem}</p></div>
+      <div class="call info"><div class="call-h">${ICON.info}<strong>O que esta ferramenta não pode dizer</strong></div><p>Ela não declara que a estrutura está segura nem que está condenada. Isso só é possível com inspeção presencial por profissional habilitado.</p></div>
+      <div class="navrow"><button type="button" class="btn" data-t="reset">Refazer a triagem</button><a class="btn primary" href="#checklist">Registrar antes de chamar um profissional</a><a class="btn" href="#cap-8">Entender os níveis</a></div></div>`;
+  }
+  PAGES.identificar = () => (TS = { step: 0, gate: [], obs: null, loc: null, tempo: null, aum: null, umi: null, sol: null, outros: [] }, {
+    title: `O que você encontrou? · ${SITE}`, desc: 'Ferramenta interativa: escolha o que observou, responda perguntas simples e receba uma orientação educativa e prudente.',
+    html: `<p class="eyebrow">Ferramenta</p><h1>O que você encontrou?</h1><p class="lead">Escolha o que observou, responda algumas perguntas e veja a orientação mais prudente. Leva cerca de um minuto.</p>
+      <div class="safety">${ICON.warn}<span><b>Risco imediato?</b> Se há queda de concreto, estalos ou deformação súbita, afaste-se e ligue para os Bombeiros (193) ou a Defesa Civil (199) antes de continuar.</span></div>
+      <div class="tool" id="tool" aria-live="polite"></div>`,
+    after() { drawTool(); }
+  });
+  function drawTool(focus = true) {
+    const el = $('#tool'); if (!el) return;
+    el.innerHTML = TS.done ? resultHTML() : toolHTML();
+    if (focus) { const h = $('.q', el) || $('.banner h2', el); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); el.scrollIntoView({ block: 'start', behavior: 'smooth' }); } }
+  }
+  function toolClick(b) {
+    const a = b.dataset.t, k = b.dataset.k, v = b.dataset.v;
+    if (a === 'pick') {
+      TS[k] = v;
+      if (k === 'obs') {
+        // sinais já cobertos pela escolha inicial não precisam ser perguntados de novo
+        TS.step++;
+      } else TS.step++;
+      if (TS.step >= STEPS.length) TS.done = true;
+    } else if (a === 'toggle') {
+      const arr = TS[k], i = arr.indexOf(v); if (i >= 0) arr.splice(i, 1); else arr.push(v);
+      drawTool(false); const again = $(`[data-t="toggle"][data-k="${k}"][data-v="${v}"]`); if (again) again.focus(); return;
+    } else if (a === 'gatego') {
+      if (TS.gate.length) { TS.done = true; } else TS.step = 1;
+    } else if (a === 'next') { TS.done = true; }
+    else if (a === 'back') { if (TS.done) TS.done = false; else TS.step = Math.max(0, TS.step - 1); }
+    else if (a === 'reset') TS = { step: 0, gate: [], obs: null, loc: null, tempo: null, aum: null, umi: null, sol: null, outros: [] };
+    drawTool();
+  }
+
+  /* ----- Checklist ----- */
+  const CHECK = ['Fotografei a manifestação de perto.', 'Tirei uma foto mostrando o contexto e a localização.', 'Registrei em qual elemento ela aparece.', 'Observei se há umidade.', 'Observei se há ferrugem.', 'Verifiquei se há concreto solto sem tocar ou remover material.', 'Registrei quando percebi o problema.', 'Anotei se parece ter aumentado, comparando fotografias anteriores.'];
+  PAGES.checklist = () => {
+    const st = store.get('mpc-check', { c: [], notes: '', where: '' });
+    return {
+      title: `Antes de chamar um profissional, registre isso · ${SITE}`, desc: 'Checklist interativo para registrar fotos e observações antes de chamar um engenheiro, com resumo para copiar.',
+      html: `<p class="eyebrow">Checklist</p><h1>Antes de chamar um profissional, registre isso.</h1><p class="lead">Um bom registro ajuda o engenheiro a entender o caso e economiza tempo na visita.</p>
+        <div class="call warn"><div class="call-h">${ICON.warn}<strong>Sem risco para você</strong></div><p>Não meça, não bata e não toque em partes deterioradas ou soltas. Fotografe à distância segura. Se houver risco de queda, afaste-se primeiro.</p></div>
+        <ul class="cl">${CHECK.map((c, i) => `<li><label><input type="checkbox" data-ci="${i}"${st.c[i] ? ' checked' : ''}><span>${c}</span></label></li>`).join('')}</ul>
+        <p class="cl-prog" id="clProg"></p>
+        <label class="field"><span>Onde está (cômodo, andar, elemento)</span><input id="clWhere" type="text" value="${esc(st.where || '')}" placeholder="Ex.: teto da varanda, 2º andar, viga sobre a porta"></label>
+        <label class="field"><span>Observações</span><textarea id="clNotes" placeholder="Quando percebeu, se aumentou, se choveu, o que mudou perto…">${esc(st.notes || '')}</textarea></label>
+        <div class="navrow no-print"><button type="button" class="btn primary" id="clCopy">Copiar resumo</button><button type="button" class="btn" id="clClear">Limpar</button><button type="button" class="btn" id="clPrint" hidden>Imprimir ou salvar em PDF</button></div>
+        <p id="clMsg" class="mono" role="status" style="margin-top:10px;color:var(--ink3)"></p>
+        <p class="foot">Seus registros ficam apenas neste navegador. Cole o resumo em uma mensagem ou e-mail para o profissional e anexe as fotos.</p>`,
+      after() {
+        const save = () => store.set('mpc-check', { c: $$('[data-ci]').map(x => x.checked), notes: $('#clNotes').value, where: $('#clWhere').value });
+        const prog = () => { const n = $$('[data-ci]').filter(x => x.checked).length; $('#clProg').textContent = `${n} de ${CHECK.length} itens`; };
+        prog();
+        $$('[data-ci]').forEach(x => x.addEventListener('change', () => { save(); prog(); }));
+        $('#clNotes').addEventListener('input', save); $('#clWhere').addEventListener('input', save);
+        const summary = () => `REGISTRO DE OBSERVAÇÃO (${new Date().toLocaleDateString('pt-BR')})\nLocal: ${$('#clWhere').value || '—'}\n\n` + CHECK.map((c, i) => `[${$$('[data-ci]')[i].checked ? 'x' : ' '}] ${c}`).join('\n') + `\n\nObservações:\n${$('#clNotes').value || '—'}\n\nGerado em ${SITE}. Material educativo, não substitui inspeção profissional.`;
+        const msg = t => { $('#clMsg').textContent = t; };
+        $('#clCopy').addEventListener('click', () => {
+          const txt = summary();
+          const fallback = () => { const ta = document.createElement('textarea'); ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); let ok = false; try { ok = document.execCommand('copy'); } catch (e) { } ta.remove(); msg(ok ? 'Resumo copiado.' : 'Não foi possível copiar. Selecione e copie o texto manualmente.'); };
+          if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(() => msg('Resumo copiado.'), fallback); else fallback();
+        });
+        $('#clClear').addEventListener('click', () => { $$('[data-ci]').forEach(x => x.checked = false); $('#clNotes').value = ''; $('#clWhere').value = ''; save(); prog(); msg('Checklist limpo.'); });
+        let framed = false; try { framed = window.top !== window.self; } catch (e) { framed = true; }
+        if (!framed) { const p = $('#clPrint'); p.hidden = false; p.addEventListener('click', () => window.print()); }
+      }
+    };
+  };
+
+  PAGES.sobre = () => ({
+    title: `Sobre e avisos · ${SITE}`, desc: 'Natureza educativa do manual, limites, fundamentação e como o conteúdo é organizado.',
+    html: `<p class="eyebrow">Sobre</p><h1>Sobre este manual</h1><p class="lead">Um guia de consulta para pessoas que não são da área da engenharia.</p>
+      <section class="sec"><h2>Aviso importante</h2><div class="call danger"><div class="call-h">${ICON.danger}<strong>Guia educativo</strong></div><p>O conteúdo deste site é educativo e <strong>não substitui a inspeção presencial de um profissional habilitado</strong>. Fotos e respostas a questionários não permitem afirmar que uma estrutura é segura ou que está comprometida.</p></div></section>
+      <section class="sec"><h2>O que o manual diferencia</h2>${BL.four()}</section>
+      <section class="sec"><h2>Fundamentação</h2><p>O conteúdo se baseia em conhecimentos consolidados de engenharia civil sobre patologia das construções. O manual evita citar limites numéricos de abertura de fissuras e critérios de avaliação isolados, porque a gravidade depende do conjunto de sinais. Normas citadas no capítulo 9 são mencionadas apenas pelo nome, e devem ser consultadas na ABNT em sua versão vigente.</p></section>
+      <section class="sec"><h2>Telefones de emergência</h2><p>Bombeiros: <span class="phone">193</span><br>Defesa Civil: <span class="phone">199</span></p></section>`
+  });
+
+  PAGES.naoencontrada = () => ({
+    title: `Página não encontrada · ${SITE}`, desc: '',
+    html: `<h1>Página não encontrada</h1><p class="lead">Esse endereço não existe no manual.</p><p><a class="btn primary" href="#inicio">Ir para o início</a></p>`
+  });
+
+  /* ---------- Navegação lateral ---------- */
+  function buildNav() {
+    const pad = n => String(n).padStart(2, '0');
+    $('#nav').innerHTML = `<h2>Manual</h2><ul><li><a href="#inicio"><span class="n">·</span>Início</a></li></ul>
+      <h2>Capítulos</h2><ul>${CH.map(c => `<li><a href="#${c.slug}"><span class="n">${pad(c.n)}</span>${c.short}</a></li>`).join('')}</ul>
+      <h2>Ferramentas</h2><ul><li><a href="#identificar"><span class="n">→</span>O que você encontrou?</a></li><li><a href="#checklist"><span class="n">→</span>Checklist de registro</a></li><li><a href="#biblioteca"><span class="n">→</span>Biblioteca visual</a></li><li><a href="#videos"><span class="n">→</span>Vídeos</a></li><li><a href="#busca"><span class="n">→</span>Pesquisar</a></li></ul>
+      <h2>Mais</h2><ul><li><a href="#sobre"><span class="n">i</span>Sobre e avisos</a></li></ul>`;
+  }
+  function markNav(route) {
+    const hrefs = { inicio: '#inicio', biblioteca: '#biblioteca', identificar: '#identificar', checklist: '#checklist', videos: '#videos', busca: '#busca', sobre: '#sobre' };
+    let target = hrefs[route] || (route.startsWith('cap-') ? '#' + route : route.startsWith('manifestacao-') ? '#biblioteca' : '');
+    $$('#nav a').forEach(a => { if (a.getAttribute('href') === target) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  }
+
+  /* ---------- Roteador ---------- */
+  function route() {
+    closeVideo();
+    let r = (location.hash || '').replace(/^#/, '') || 'inicio';
+    let page;
+    if (r.startsWith('cap-')) { const c = CH.find(x => x.slug === r); page = c ? chapterPage(c) : PAGES.naoencontrada(); }
+    else if (r.startsWith('manifestacao-')) page = PAGES.manifestacao(r.slice(13));
+    else if (PAGES[r] && r !== 'manifestacao' && r !== 'naoencontrada') page = PAGES[r]();
+    else { page = PAGES.naoencontrada(); r = ''; }
+    $('#main').innerHTML = `<div class="page${page.wide ? ' wide' : ''}">${page.html}</div>`;
+    document.title = page.title;
+    const md_ = $('meta[name="description"]'); if (md_ && page.desc) md_.setAttribute('content', page.desc);
+    markNav(r);
+    $('#bar').style.width = '0';
+    $('#bar').dataset.on = page.progress ? '1' : '';
+    closeMenu();
+    window.scrollTo(0, 0);
+    const main = $('#main'); main.focus({ preventScroll: true });
+    if (page.after) page.after();
+    onScroll();
+  }
+
+  /* ---------- Menu, tema, rolagem ---------- */
+  function openMenu() { $('#nav').classList.add('open'); $('#scrim').classList.add('show'); $('#menuBtn').setAttribute('aria-expanded', 'true'); }
+  function closeMenu() { $('#nav').classList.remove('open'); $('#scrim').classList.remove('show'); $('#menuBtn').setAttribute('aria-expanded', 'false'); }
+  function onScroll() {
+    const bar = $('#bar'); if (!bar.dataset.on) { bar.style.width = '0'; return; }
+    const pg = $('.page'); if (!pg) return;
+    const top = pg.getBoundingClientRect().top + window.scrollY, h = pg.offsetHeight - window.innerHeight;
+    const p = h > 0 ? Math.min(1, Math.max(0, (window.scrollY - top) / h)) : 1;
+    bar.style.width = (p * 100).toFixed(1) + '%';
+  }
+  function setTheme(t) { if (t) document.documentElement.setAttribute('data-theme', t); else document.documentElement.removeAttribute('data-theme'); }
+
+  function init() {
+    document.documentElement.lang = 'pt-BR';
+    buildNav();
+    const saved = store.get('mpc-theme', null); if (saved) setTheme(saved);
+    $('#themeBtn').addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const nx = cur === 'dark' ? 'light' : 'dark'; setTheme(nx); store.set('mpc-theme', nx);
+    });
+    $('#menuBtn').addEventListener('click', () => $('#nav').classList.contains('open') ? closeMenu() : openMenu());
+    $('#scrim').addEventListener('click', closeMenu);
+    $('#skip').addEventListener('click', () => $('#main').focus());
+    $('#hdrSearch').addEventListener('submit', e => { e.preventDefault(); lastQuery = $('#hdrQ').value; $('#hdrQ').value = ''; if (location.hash === '#busca') route(); else location.hash = 'busca'; });
+    document.addEventListener('submit', e => {
+      if (e.target.id === 'homeSearch') { e.preventDefault(); lastQuery = $('#homeQ').value; location.hash = 'busca'; }
+    });
+    document.addEventListener('click', e => {
+      const q = e.target.closest('[data-q]'); if (q) { lastQuery = q.dataset.q; if (location.hash === '#busca') { e.preventDefault(); route(); } return; }
+      const v = e.target.closest('[data-video]'); if (v) { openVideo(v.dataset.video); return; }
+      if (e.target.closest('[data-close-video]')) { closeVideo(); return; }
+      if (e.target.classList.contains('vmodal')) { closeVideo(); return; }
+      const s = e.target.closest('[data-scroll]'); if (s) { const t = document.getElementById(s.dataset.scroll); if (t) { t.scrollIntoView({ behavior: 'smooth', block: 'start' }); } return; }
+      const t = e.target.closest('[data-t]'); if (t) { toolClick(t); return; }
+      const lnk = e.target.closest('a[href^="#"]');
+      if (lnk && lnk.getAttribute('href') === (location.hash || '#inicio')) { e.preventDefault(); route(); return; }
+      if (e.target.closest('#nav a')) closeMenu();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeVideo(); closeMenu(); } });
+    window.addEventListener('hashchange', route);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    route();
+  }
+  init();
+})();
+
+</script>
+</html>
